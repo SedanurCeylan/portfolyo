@@ -2,7 +2,13 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #f1efed;
+  --bgrenk: #f1efed;
+  --textrenk:#151515;
+  --formrenk: #e5e1dc;
+  
+
+  
 }
 
 @theme inline {
@@ -14,13 +20,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #f1efed;
+    --foreground: #151515;
+    
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-space-grotesk), sans-serif;
 }
