@@ -33,7 +33,7 @@ const Footer = () => {
        <div className='flex items-center justify-between mt-4 py-10'>
             <p>sdnrcyln2@gmail.com</p>
             <p>© 2025 Sedanur Ceylan</p>
-            <p className='flex gap-1 items-center'> <ArrowUpIcon className="size-5" /> Başa Dön</p>
+            <a href="/"  className='flex gap-1 items-center'> <ArrowUpIcon className="size-5" /> Başa Dön</a>
        </div>
     </div>
     </div>

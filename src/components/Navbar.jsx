@@ -1,34 +1,48 @@
-import React from 'react'
+"use client";
+
+import React, { useState } from "react";
+import Link from "next/link";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <div className='flex justify-between items-center text-textrenk py-4 border-b border-textrenk text-xl font-semibold'>
-       
+    <nav className="w-full border-b border-textrenk text-textrenk fixed-top">
+      <div className="container mx-auto flex justify-between items-center py-4 px-4">
+        <div className="text-2xl font-semibold">Sedanur Ceylan</div>
 
-        <div className=''>
-            Sedanur Ceylan
+        <div className="hidden md:flex gap-7 text-lg">
+          <Link href="/">Anasayfa</Link>
+          <Link href="#hakkimda">Hakkımda</Link>
+          <Link href="#proje">Proje</Link>
+          <Link href="/iletisim">İletişim</Link>
         </div>
-        <div>
-            <ul className='flex gap-7'>
-                <li>
-                    <a href="/">Anasayfa</a>
-                </li>
-                <li>
-                    <a href="/">Hakkımda</a>
-                </li>
-                <li>
-                    <a href="/">Proje</a>
-                </li>
-                <li>
-                    <a href="/iletisim">İletişim</a>
-                </li>
-            </ul>
-        </div>
-        <div>
-            21:58
-        </div>
-    </div>
-  )
-}
 
-export default Navbar
+        <div className="hidden md:block">Isparta-Ankara</div>
+
+        <div className="md:hidden">
+          <button onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? (
+              <XMarkIcon className="h-6 w-6" />
+            ) : (
+              <Bars3Icon className="h-6 w-6" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {menuOpen && (
+        <div className="md:hidden px-4 pb-4 space-y-2 text-lg">
+          <Link href="/" className="block">Anasayfa</Link>
+          <Link href="/hakkimda" className="block">Hakkımda</Link>
+          <Link href="/projeler" className="block">Proje</Link>
+          <Link href="/iletisim" className="block">İletişim</Link>
+          <div className="pt-2 text-sm text-gray-400">21:58</div>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;
