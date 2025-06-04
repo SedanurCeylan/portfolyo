@@ -73,29 +73,31 @@ export default function Home() {
   return (
     <div>
       <section className="container mx-auto px-6 py-24 flex flex-col items-center text-center">
-        <h1 className="text-7xl md:text-8xl font-light mb-8 text-[var(--textrenk)] leading-tight">
-          &lt;Ben, Sedanur Ceylan/&gt;
-        </h1>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-10 max-w-5xl mb-12">
-          <p className="max-w-xl text-lg md:text-2xl text-[var(--textrenk)]/70 italic text-start md:text-center">
-            Kod yazmak benim hayatımın bir parçası,<br />
-            teknolojiyle dünyayı daha iyi bir yer haline getirmeyi hedefliyorum.
-          </p>
-          <p className="text-5xl md:text-8xl text-normal text-[var(--textrenk) text-start">
-          Bilgisayar 
-          <br/>    Mühendisi
-          </p>
-        </div>
+  <h1 className="text-7xl md:text-8xl font-light mb-8 text-[var(--textrenk)] leading-tight">
+    &lt;Ben Sedanur Ceylan/&gt;
+  </h1>
 
-        <a
-          href="/cv.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block px-8 py-3 border border-[var(--textrenk)] rounded-md text-[var(--textrenk)] hover:bg-[var(--textrenk)] hover:text-[var(--bgrenk)] transition-colors duration-300"
-        >
-          CV'mi buradan görüntüleyebilirsiniz
-        </a>
-      </section>
+  <div className="flex flex-col md:flex-row items-center justify-center gap-12 max-w-5xl mb-12">
+    <p className="max-w-xl text-lg md:text-2xl text-[var(--textrenk)]/70 italic text-left md:text-center">
+      Kod yazmak hayatımın bir parçası. <br />
+      Teknolojiyle dünyayı daha iyi bir yer haline getirmeyi hedefliyorum.
+    </p>
+    <p className="text-5xl md:text-8xl font-normal text-[var(--textrenk)] text-left md:text-right">
+      Bilgisayar <br />
+      Mühendisi
+    </p>
+  </div>
+
+  <a
+    href="/cv.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block px-8 py-3 border border-[var(--textrenk)] rounded-md text-[var(--textrenk)] hover:bg-[var(--textrenk)] hover:text-[var(--bgrenk)] transition-colors duration-300"
+  >
+    CV&#39;mi buradan görüntüleyebilirsiniz
+  </a>
+</section>
+
 
 
       <section className="container mx-auto px-4 py-10">
