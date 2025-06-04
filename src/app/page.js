@@ -92,9 +92,8 @@ export default function Home() {
     href="/cv.pdf"
     target="_blank"
     rel="noopener noreferrer"
-    className="inline-block px-8 py-3 border border-[var(--textrenk)] rounded-md text-[var(--textrenk)] hover:bg-[var(--textrenk)] hover:text-[var(--bgrenk)] transition-colors duration-300"
-  >
-    CV&#39;mi buradan görüntüleyebilirsiniz
+    className="inline-block px-8 py-3 border border-[var(--textrenk)] rounded-md text-[var(--textrenk)] hover:bg-[var(--textrenk)] hover:text-[var(--bgrenk)] transition-colors duration-300">
+    CV'mi buradan görüntüleyebilirsiniz
   </a>
 </section>
 
