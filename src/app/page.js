@@ -86,7 +86,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="bg-[var(--bgrenk)] border border-[var(--textrenk)]/30 rounded-2xl p-6 md:p-10 shadow-2xl font-mono text-sm md:text-base text-[var(--textrenk)] leading-relaxed relative overflow-hidden">
+        {/* <div className="bg-[var(--bgrenk)] border border-[var(--textrenk)]/30 rounded-2xl p-6 md:p-10 shadow-2xl font-mono text-sm md:text-base text-[var(--textrenk)] leading-relaxed relative overflow-hidden">
           <div className="absolute top-4 left-4 flex gap-2">
             <span className="w-3 h-3 bg-red-500 rounded-full" />
             <span className="w-3 h-3 bg-yellow-500 rounded-full" />
@@ -101,7 +101,7 @@ export default function Home() {
           </p>
           <p className="ml-6">vizyon: <span className="text-yellow-300">Kodla değer üretmek</span></p>
           <p>&#125;;</p>
-        </div>
+        </div> */}
 
         <div>
           <a
