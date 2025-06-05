@@ -94,12 +94,12 @@ export default function Home() {
           </div>
           <p className="mt-6 text-green-400">// Hakkımda kısa bilgi</p>
           <p>const <span className="text-blue-400">gelistirici</span> = &#123;</p>
-          <p className="ml-6">isim: <span className="text-pink-300">"Sedanur Ceylan"</span>,</p>
-          <p className="ml-6">unvan: <span className="text-pink-300">"Bilgisayar Mühendisi"</span>,</p>
+          <p className="ml-6">isim: <span className="text-pink-300">Sedanur Ceylan</span>,</p>
+          <p className="ml-6">unvan: <span className="text-pink-300">Bilgisayar Mühendisi</span>,</p>
           <p className="ml-6">
-            beceriler: [<span className="text-pink-300">"React"</span>, <span className="text-pink-300">"Next.js"</span>, <span className="text-pink-300">"SCSS"</span>],
+            beceriler: [<span className="text-pink-300">React</span>, <span className="text-pink-300">Next.js</span>, <span className="text-pink-300">SCSS</span>],
           </p>
-          <p className="ml-6">vizyon: <span className="text-yellow-300">"Kodla değer üretmek"</span></p>
+          <p className="ml-6">vizyon: <span className="text-yellow-300">Kodla değer üretmek</span></p>
           <p>&#125;;</p>
         </div>
 
