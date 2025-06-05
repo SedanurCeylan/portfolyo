@@ -72,30 +72,52 @@ export default function Home() {
 
   return (
     <div>
-      <section className="container mx-auto px-6 py-24 flex flex-col items-center text-center">
-  <h1 className="text-7xl md:text-8xl font-light mb-8 text-[var(--textrenk)] leading-tight">
-    &lt;Ben Sedanur Ceylan/&gt;
-  </h1>
+      <section className="container mx-auto px-6 py-40 max-w-6xl flex flex-col gap-20 text-left">
+        {/* BAŞLIK */}
+        <div className="space-y-6">
+          <h1 className="text-[42px] md:text-[68px] font-extrabold text-[var(--textrenk)] leading-tight tracking-tight">
+            <span className="text-blue-500">&lt;</span>
+            Ben Sedanur Ceylan
+            <span className="text-blue-500">/&gt;</span>
+          </h1>
+          <p className="text-lg md:text-2xl text-[var(--textrenk)]/80 font-light max-w-3xl leading-relaxed">
+            Bilgisayar Mühendisi olarak, yazılımı sadece bir meslek değil; bir tutku olarak görüyorum.
+            <br className="hidden md:block" />
+            Kullanıcı dostu, hızlı ve modern arayüzler geliştirmeyi seviyorum.
+          </p>
+        </div>
 
-  <div className="flex flex-col md:flex-row items-center justify-center gap-12 max-w-5xl mb-12">
-    <p className="max-w-xl text-lg md:text-2xl text-[var(--textrenk)]/70 italic text-left md:text-center">
-      Kod yazmak hayatımın bir parçası. <br />
-      Teknolojiyle dünyayı daha iyi bir yer haline getirmeyi hedefliyorum.
-    </p>
-    <p className="text-5xl md:text-8xl font-normal text-[var(--textrenk)] text-left md:text-right">
-      Bilgisayar <br />
-      Mühendisi
-    </p>
-  </div>
+        {/* KOD BİLGİ PANELİ */}
+        <div className="bg-[var(--bgrenk)] border border-[var(--textrenk)]/30 rounded-2xl p-6 md:p-10 shadow-2xl font-mono text-sm md:text-base text-[var(--textrenk)] leading-relaxed relative overflow-hidden">
+          <div className="absolute top-4 left-4 flex gap-2">
+            <span className="w-3 h-3 bg-red-500 rounded-full" />
+            <span className="w-3 h-3 bg-yellow-500 rounded-full" />
+            <span className="w-3 h-3 bg-green-500 rounded-full" />
+          </div>
+          <p className="mt-6 text-green-400">// Hakkımda kısa bilgi</p>
+          <p>const <span className="text-blue-400">gelistirici</span> = &#123;</p>
+          <p className="ml-6">isim: <span className="text-yellow-300">"Sedanur Ceylan"</span>,</p>
+          <p className="ml-6">unvan: <span className="text-yellow-300">"Bilgisayar Mühendisi"</span>,</p>
+          <p className="ml-6">
+            beceriler: [<span className="text-pink-300">"React"</span>, <span className="text-pink-300">"Next.js"</span>, <span className="text-pink-300">"SCSS"</span>],
+          </p>
+          <p className="ml-6">vizyon: <span className="text-yellow-300">"Kodla değer üretmek"</span></p>
+          <p>&#125;;</p>
+        </div>
 
-  <a
-    href="/cv.pdf"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-block px-8 py-3 border border-[var(--textrenk)] rounded-md text-[var(--textrenk)] hover:bg-[var(--textrenk)] hover:text-[var(--bgrenk)] transition-colors duration-300">
-    CVmi buradan görüntüleyebilirsiniz
-  </a>
-</section>
+        {/* CV LİNKİ */}
+        <div>
+          <a
+            href="/cv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block text-lg md:text-xl font-medium text-[var(--textrenk)] border-b-2 border-[var(--textrenk)] hover:text-blue-500 hover:border-blue-500 transition duration-300"
+          >
+            ↳ CV’mi buradan inceleyebilirsiniz
+          </a>
+        </div>
+      </section>
+
 
 
 

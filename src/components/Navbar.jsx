@@ -14,8 +14,6 @@ const Navbar = () => {
 
         <div className="hidden md:flex gap-7 text-lg">
           <Link href="/">Anasayfa</Link>
-          <Link href="#hakkimda">Hakkımda</Link>
-          <Link href="#proje">Proje</Link>
           <Link href="/iletisim">İletişim</Link>
         </div>
 
