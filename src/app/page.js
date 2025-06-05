@@ -4,6 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import React, { useState } from "react";
+import Image from 'next/image';
+
 
 export default function Home() {
   const settings = {
