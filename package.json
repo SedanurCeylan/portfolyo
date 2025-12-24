@@ -11,9 +11,9 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "framer-motion": "^12.23.12",
-    "next": "15.3.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "next": "^16.1.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "react-simple-typewriter": "^5.0.1",
     "react-slick": "^0.30.3",
     "slick-carousel": "^1.8.1",
