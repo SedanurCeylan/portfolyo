@@ -90,7 +90,7 @@ const Navbar = () => {
             İletişim
           </Link>
           <a
-            href="/cv.pdf"
+            href="/seda-cv.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="block font-medium text-[var(--textrenk)] hover:text-blue-600 transition-colors duration-300"
