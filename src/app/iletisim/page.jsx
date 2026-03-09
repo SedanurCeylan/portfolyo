@@ -6,7 +6,11 @@ import { motion } from "framer-motion";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -22,7 +26,7 @@ export default function ContactPage() {
       const res = await fetch("https://formspree.io/f/mgvyvbrw", {
         method: "POST",
         headers: {
-          "Accept": "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
@@ -41,92 +45,109 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-28">
-      <motion.h1
-        className="text-4xl md:text-6xl font-extrabold text-center mb-6 text-[var(--textrenk)]"
-        initial={{ opacity: 0, y: -30 }}
+    <section className="relative overflow-hidden container mx-auto px-4 py-24 md:py-28">
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute left-1/2 top-12 h-56 w-56 -translate-x-1/2 rounded-full bg-[var(--textrenk)]/10 blur-3xl" />
+        <div className="absolute right-0 top-1/3 h-44 w-44 rounded-full bg-[var(--textrenk)]/8 blur-3xl" />
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: -24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
+        className="text-center"
       >
-        İletişim
-      </motion.h1>
 
-      <motion.p
-        className="text-center text-lg text-[var(--textrenk)]/80 max-w-2xl mx-auto"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-      >
-        Herhangi bir sorunuz varsa, aşağıdaki formu doldurmanız yeterli. En kısa sürede sizinle iletişime geçeceğim.
-      </motion.p>
+        <h1 className="text-4xl md:text-6xl font-extrabold text-center mb-5 text-[var(--textrenk)] leading-tight">
+          İletişim
+        </h1>
+
+        <p className="text-center text-base md:text-lg text-[var(--textrenk)]/80 max-w-2xl mx-auto leading-8">
+         Herhangi bir sorunuz varsa, aşağıdaki formu doldurmanız yeterli. En kısa sürede sizinle iletişime geçeceğim.
+        </p>
+      </motion.div>
 
       <motion.form
         onSubmit={handleSubmit}
-        className="mt-14 max-w-2xl mx-auto bg-[var(--formrenk)] p-8 md:p-12 rounded-3xl shadow-2xl border border-[var(--textrenk)]/20 backdrop-blur-md space-y-6"
+        className="relative mt-14 max-w-2xl mx-auto rounded-[28px] border border-[var(--textrenk)]/15 bg-[var(--formrenk)]/90 p-6 md:p-10 shadow-[0_18px_60px_rgba(0,0,0,0.12)] backdrop-blur-xl"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4 }}
+        transition={{ delay: 0.35, duration: 0.7 }}
       >
-        <div>
-          <label htmlFor="name" className="block text-md font-semibold text-[var(--textrenk)] mb-2">
-            Adınız
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            placeholder="Adınızı girin"
-            className="w-full p-3 rounded-xl bg-[var(--bgrenk)] border border-gray-400/30 text-[var(--textrenk)] focus:outline-none focus:ring-2 focus:ring-[var(--textrenk)] transition"
-          />
+        <div className="absolute inset-0 rounded-[28px] bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
+
+        <div className="relative space-y-6">
+          <div className="grid gap-6 md:grid-cols-2">
+            <div>
+              <label
+                htmlFor="name"
+                className="mb-2 block text-sm md:text-base font-semibold text-[var(--textrenk)]"
+              >
+                Adınız
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                placeholder="Adınızı girin"
+                className="w-full rounded-2xl border border-[var(--textrenk)]/15 bg-[var(--bgrenk)]/80 px-4 py-3.5 text-[var(--textrenk)] placeholder:text-[var(--textrenk)]/45 outline-none transition duration-300 focus:border-[var(--textrenk)]/40 focus:ring-4 focus:ring-[var(--textrenk)]/10"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="mb-2 block text-sm md:text-base font-semibold text-[var(--textrenk)]"
+              >
+                E-posta
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                placeholder="example@mail.com"
+                className="w-full rounded-2xl border border-[var(--textrenk)]/15 bg-[var(--bgrenk)]/80 px-4 py-3.5 text-[var(--textrenk)] placeholder:text-[var(--textrenk)]/45 outline-none transition duration-300 focus:border-[var(--textrenk)]/40 focus:ring-4 focus:ring-[var(--textrenk)]/10"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label
+              htmlFor="message"
+              className="mb-2 block text-sm md:text-base font-semibold text-[var(--textrenk)]"
+            >
+              Mesajınız
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              rows={6}
+              required
+              placeholder="Mesajınızı buraya yazın..."
+              className="w-full rounded-2xl border border-[var(--textrenk)]/15 bg-[var(--bgrenk)]/80 px-4 py-3.5 text-[var(--textrenk)] placeholder:text-[var(--textrenk)]/45 outline-none transition duration-300 focus:border-[var(--textrenk)]/40 focus:ring-4 focus:ring-[var(--textrenk)]/10 resize-none"
+            />
+          </div>
+
+          <motion.button
+            type="submit"
+            disabled={loading}
+            whileTap={{ scale: 0.98 }}
+            whileHover={{ scale: 1.01 }}
+            className="group w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-[var(--textrenk)] px-6 py-4 text-base md:text-lg font-semibold text-[var(--bgrenk)] shadow-[0_12px_30px_rgba(0,0,0,0.16)] transition duration-300 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            <PaperAirplaneIcon className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            {loading ? "Gönderiliyor..." : "Mesajı Gönder"}
+          </motion.button>
         </div>
-
-        <div>
-          <label htmlFor="email" className="block text-md font-semibold text-[var(--textrenk)] mb-2">
-            E-posta
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            placeholder="example@mail.com"
-            className="w-full p-3 rounded-xl bg-[var(--bgrenk)] border border-gray-400/30 text-[var(--textrenk)] focus:outline-none focus:ring-2 focus:ring-[var(--textrenk)] transition"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="message" className="block text-md font-semibold text-[var(--textrenk)] mb-2">
-            Mesajınız
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            rows={5}
-            required
-            placeholder="Mesajınızı buraya yazın..."
-            className="w-full p-3 rounded-xl bg-[var(--bgrenk)] border border-gray-400/30 text-[var(--textrenk)] focus:outline-none focus:ring-2 focus:ring-[var(--textrenk)] transition resize-none"
-          ></textarea>
-        </div>
-
-       <motion.button
-  type="submit"
-  disabled={loading}
-  whileTap={{ scale: 0.95 }}
-  whileHover={{ scale: 1.03 }} 
-  className="w-full flex justify-center items-center gap-2 bg-[var(--textrenk)] text-[var(--bgrenk)] py-3 rounded-xl text-lg font-semibold hover:brightness-110 hover:shadow-lg transition duration-300 disabled:opacity-60"
->
-  <PaperAirplaneIcon className="h-5 w-5" />
-  {loading ? "Gönderiliyor..." : "Gönder"}
-</motion.button>
-
       </motion.form>
-    </div>
+    </section>
   );
 }

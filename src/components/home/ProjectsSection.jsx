@@ -8,19 +8,21 @@ import { motion } from "framer-motion";
 
 export default function ProjectsSection() {
   const settings = {
-  dots: true, 
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  arrows: false,
-};
-
+    dots: true,
+    infinite: true,
+    speed: 600,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+  };
 
   const projeler = [
-     {
-      
-      title: "Görüntü İşleme ve Derin Öğrenme (MIL) Yaklaşımı ile Elmalarda Erken Dönem Acı Benek Tespiti",
+    {
+      title:
+        "Görüntü İşleme ve Derin Öğrenme (MIL) Yaklaşımı ile Elmalarda Erken Dönem Acı Benek Tespiti",
       description:
         "Deep Think Teknoloji bünyesinde geliştirdiğimiz bu projede, elmalarda erken dönem acı benek (bitter pit) hastalığının tespiti amaçlanmıştır. Bu kapsamda 4 ay boyunca 1800 elma örneğinden RGB endüstriyel kameralar kullanılarak görüntü verisi toplanmış, elde edilen görüntülere çeşitli görüntü önişleme yöntemleri uygulanmıştır. Toplanan veriler kullanılarak derin öğrenme tabanlı Çoklu Örnekli Öğrenme (Multiple Instance Learning – MIL) yaklaşımı ile hastalığın erken evrede tespit edilmesi hedeflenmiştir.",
       images: ["/sirket.png", "/sirket.png", "/sirket.png"],
@@ -41,21 +43,14 @@ export default function ProjectsSection() {
       makale: "https://ieeexplore.ieee.org/document/10778718",
       images: ["/11.jpeg", "/21.jpeg", "/31.jpeg"],
     },
-    
-     {
+    {
       title: "ASP.NET ile E-Ticaret",
       description:
         "Bu proje, ASP.NET (.NET 9) kullanılarak geliştirilmiş temel bir e-ticaret uygulamasıdır. Uygulama; ürün listeleme, ürün detayları, sepet işlemleri, sipariş oluşturma ve yönetim paneli (Admin Panel) gibi bir e-ticaret sisteminde bulunması gereken temel fonksiyonları içerir. Veri yapısı Entity Framework Core (Code-First) ile oluşturulmuş, veritabanı olarak SQLite kullanılmıştır. Kullanıcı yönetimi için ASP.NET Identity altyapısı projeye entegre edilmiştir. (Henüz eksikleri mevcuttur güncellenmeye devam edecektir).",
       github: "https://github.com/SedanurCeylan/eticaret-v1",
       youtube: "https://youtu.be/MT3d4ME_MZc",
-      images: ["/aaa.png","/aaa.png","/aaa.png"],
+      images: ["/aaa.png", "/aaa.png", "/aaa.png"],
     },
-    // {
-    //   title: "ZenCode",
-    //   description: "Bu Proje henüz geliştirme aşamasındadır detaylar çok yakında eklenecektir.",
-    //   github: "https://github.com/SedanurCeylan/ZenCodeNext",
-    //   images: ["/yakında.jpg", "/yakında.jpg"],
-    // },
   ];
 
   return (
@@ -63,74 +58,94 @@ export default function ProjectsSection() {
       <p className="text-textrenk py-4 border-b border-textrenk text-2xl font-semibold">
         Projeler
       </p>
-      <div className="grid gap-16 mt-10">
+
+      <div className="grid gap-12 mt-10">
         {projeler.map((project, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: i * 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-2 items-center gap-6"
+            transition={{ duration: 0.6, delay: i * 0.15 }}
+            className="group rounded-[28px] border border-white/10 bg-white/[0.04] backdrop-blur-md shadow-[0_10px_40px_rgba(0,0,0,0.18)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.24)] transition-all duration-500 overflow-hidden"
           >
-            <div>
-              <p className="text-3xl md:text-4xl font-semibold">{project.title}</p>
-              <p className="text-lg mt-2 text-justify">{project.description}</p>
-              <div className="flex flex-wrap gap-4 mt-4">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gray-300 text-textrenk px-4 py-2 rounded shadow-md hover:bg-gray-400 hover:scale-105 transition-all duration-300"
-                >
-                  Github
-                </a>
-                {project.live && (
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-textrenk underline px-4 py-2 hover:text-blue-500 transition-colors duration-300"
-                  >
-                    Projeye Git
-                  </a>
-                )}
-                {project.youtube && (
-                  <a
-                    href={project.youtube}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-textrenk underline px-4 py-2 hover:text-blue-500 transition-colors duration-300"
-                  >
-                    Youtube 
-                  </a>
-                )}
-                {project.makale && (
-                  <a
-                    href={project.makale}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-textrenk underline px-4 py-2 hover:text-blue-500 transition-colors duration-300"
-                  >
-                    Makaleye Git
-                  </a>
-                )}
+            <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 p-5 md:p-8">
+              <div className="flex flex-col justify-center">
+                <p className="text-textrenk text-3xl md:text-4xl font-semibold leading-tight">
+                  {project.title}
+                </p>
+
+                <p className="text-base md:text-lg mt-4 text-justify text-textrenk/80 leading-8">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-3 mt-6">
+  {project.github && (
+    <a
+      href={project.github}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center justify-center whitespace-nowrap rounded-full bg-black px-6 py-3 text-base font-semibold !text-white shadow-md transition-all duration-300 hover:scale-105 hover:opacity-90"
+    >
+      Github
+    </a>
+  )}
+
+  {project.live && (
+    <a
+      href={project.live}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center justify-center whitespace-nowrap rounded-full border-2 border-black px-6 py-3 text-base font-semibold !text-black transition-all duration-300 hover:bg-black hover:!text-white"
+    >
+      Siteye Git
+    </a>
+  )}
+
+  {project.youtube && (
+    <a
+      href={project.youtube}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center justify-center whitespace-nowrap rounded-full border-2 border-black px-6 py-3 text-base font-semibold !text-black transition-all duration-300 hover:bg-black hover:!text-white"
+    >
+      Youtube
+    </a>
+  )}
+
+  {project.makale && (
+    <a
+      href={project.makale}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center justify-center whitespace-nowrap rounded-full border-2 border-black px-6 py-3 text-base font-semibold !text-black transition-all duration-300 hover:bg-black hover:!text-white"
+    >
+      Makaleye Git
+    </a>
+  )}
+</div>
+              </div>
+
+              <div className="relative">
+                <div className="rounded-[24px] overflow-hidden border border-white/10 bg-black/5 p-3 shadow-[0_8px_30px_rgba(0,0,0,0.22)]">
+                  <Slider {...settings}>
+                    {project.images.map((img, idx) => (
+                      <div key={idx} className="outline-none">
+                        <div className="relative w-full h-[260px] md:h-[340px] rounded-[18px] overflow-hidden">
+                          <Image
+                            src={img}
+                            fill
+                            alt={`${project.title} ${idx + 1}`}
+                            className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                        </div>
+                      </div>
+                    ))}
+                  </Slider>
+                </div>
               </div>
             </div>
-
-            <Slider {...settings}>
-              {project.images.map((img, idx) => (
-                <div key={idx} className="leading-[0] outline-none">
-                 <Image
-  src={img}
-  width={500}
-  height={300}
-  alt="..."
-  className="w-full h-full object-cover rounded-lg"
-/>
-                </div>
-              ))}
-            </Slider>
           </motion.div>
         ))}
       </div>
