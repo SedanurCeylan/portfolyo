@@ -18,13 +18,12 @@ export default function ProjectsSection() {
 
 
   const projeler = [
-    {
-      title: "(TUBITAK 2209-A) IoT Sızma Testleri İçin Üretici Yapay Zeka Destekli Web Platformu",
+     {
+      
+      title: "Görüntü İşleme ve Derin Öğrenme (MIL) Yaklaşımı ile Elmalarda Erken Dönem Acı Benek Tespiti",
       description:
-        "IoT sızma testleri için geliştirilen bu web platformu, GAN mimarisine sahip iki yapay sinir ağı kullanarak, derin öğrenme ile işlenen verilerden gerçekçi ve özgün zararlı yazılım veri setleri üretir. Bu veri setleri, kullanıcı dostu bir web arayüzü üzerinden sunulmaktadır. Proje kapsamında hazırlanan “IoT Siber Tehdit Senaryoları Kullanılarak Generatif Yapay Zeka Destekli Web Platformu ile Siber Güvenlik Eğitimi” başlıklı makalemiz IEEE Xplore ’da yayımlanmıştır.",
-      github: "https://github.com/SedanurCeylan/tubitakprojesi",
-      makale: "https://ieeexplore.ieee.org/document/10778718",
-      images: ["/11.jpeg", "/21.jpeg", "/31.jpeg"],
+        "Deep Think Teknoloji bünyesinde geliştirdiğimiz bu projede, elmalarda erken dönem acı benek (bitter pit) hastalığının tespiti amaçlanmıştır. Bu kapsamda 4 ay boyunca 1800 elma örneğinden RGB endüstriyel kameralar kullanılarak görüntü verisi toplanmış, elde edilen görüntülere çeşitli görüntü önişleme yöntemleri uygulanmıştır. Toplanan veriler kullanılarak derin öğrenme tabanlı Çoklu Örnekli Öğrenme (Multiple Instance Learning – MIL) yaklaşımı ile hastalığın erken evrede tespit edilmesi hedeflenmiştir.",
+      images: ["/sirket.png", "/sirket.png", "/sirket.png"],
     },
     {
       title: "Kripto Al-Sat Paneli",
@@ -34,20 +33,29 @@ export default function ProjectsSection() {
       live: "https://cryptoproject-ten.vercel.app/en",
       images: ["/1.jpeg", "/2.jpeg", "/4.jpeg", "/5.jpeg", "/6.jpeg"],
     },
+    {
+      title: "(TUBITAK 2209-A) IoT Sızma Testleri İçin Üretici Yapay Zeka Destekli Web Platformu",
+      description:
+        "IoT sızma testleri için geliştirilen bu web platformu, GAN mimarisine sahip iki yapay sinir ağı kullanarak, derin öğrenme ile işlenen verilerden gerçekçi ve özgün zararlı yazılım veri setleri üretir. Bu veri setleri, kullanıcı dostu bir web arayüzü üzerinden sunulmaktadır. Proje kapsamında hazırlanan “IoT Siber Tehdit Senaryoları Kullanılarak Generatif Yapay Zeka Destekli Web Platformu ile Siber Güvenlik Eğitimi” başlıklı makalemiz IEEE Xplore ’da yayımlanmıştır.",
+      github: "https://github.com/SedanurCeylan/tubitakprojesi",
+      makale: "https://ieeexplore.ieee.org/document/10778718",
+      images: ["/11.jpeg", "/21.jpeg", "/31.jpeg"],
+    },
+    
      {
       title: "ASP.NET ile E-Ticaret",
       description:
         "Bu proje, ASP.NET (.NET 9) kullanılarak geliştirilmiş temel bir e-ticaret uygulamasıdır. Uygulama; ürün listeleme, ürün detayları, sepet işlemleri, sipariş oluşturma ve yönetim paneli (Admin Panel) gibi bir e-ticaret sisteminde bulunması gereken temel fonksiyonları içerir. Veri yapısı Entity Framework Core (Code-First) ile oluşturulmuş, veritabanı olarak SQLite kullanılmıştır. Kullanıcı yönetimi için ASP.NET Identity altyapısı projeye entegre edilmiştir. (Henüz eksikleri mevcuttur güncellenmeye devam edecektir).",
       github: "https://github.com/SedanurCeylan/eticaret-v1",
       youtube: "https://youtu.be/MT3d4ME_MZc",
-      images: ["/aa.png","/aa.png","/aa.png"],
+      images: ["/aaa.png","/aaa.png","/aaa.png"],
     },
-    {
-      title: "ZenCode",
-      description: "Bu Proje henüz geliştirme aşamasındadır detaylar çok yakında eklenecektir.",
-      github: "https://github.com/SedanurCeylan/ZenCodeNext",
-      images: ["/yakında.jpg", "/yakında.jpg"],
-    },
+    // {
+    //   title: "ZenCode",
+    //   description: "Bu Proje henüz geliştirme aşamasındadır detaylar çok yakında eklenecektir.",
+    //   github: "https://github.com/SedanurCeylan/ZenCodeNext",
+    //   images: ["/yakında.jpg", "/yakında.jpg"],
+    // },
   ];
 
   return (

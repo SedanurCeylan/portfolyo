@@ -16,12 +16,10 @@ export default function AboutMeSection() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         />
-        <p className="max-w-[1000px] text-justify text-lg md:text-2xl">
-         Bilgisayar mühendisiyim. Temiz, anlaşılır ve sürdürülebilir kod yazmaya önem veriyor, teknolojik gelişmeleri takip
-ederek teknik yetkinliklerimi sürekli geliştiriyorum. Üretmeye, öğrenmeye ve kendimi geliştirmeye odaklanan bir
-çalışma disiplinine sahibim.
+        <p className="max-w-[1000px] text-justify text-lg md:text-2xl">Temiz, anlaşılır ve sürdürülebilir kod yazmaya önem veriyor; teknolojik gelişmeleri takip ederek teknik yetkinliklerimi sürekli geliştirmeye çalışıyorum. Projeler geliştirerek pratik deneyim kazanmayı, yeni teknolojileri öğrenmeyi ve üretmeye dayalı bir çalışma disiplinini benimsiyorum. Öğrenmeye, araştırmaya ve kendimi sürekli geliştirmeye odaklı bir çalışma yaklaşımına sahibim.
         </p>
       </div>
+      <br />
     </section>
   );
 }

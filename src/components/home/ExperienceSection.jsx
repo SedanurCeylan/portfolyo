@@ -10,7 +10,7 @@ export default function ExperienceSection() {
       position: "Bilgisayar Mühendisi",
       period: "09/2025 – Halen",
       description:
-        "Devam eden bir TÜBİTAK projesinde veri toplama ve analiz süreçlerinde aktif görev almaktayım. Bunun yanı sıra gömülü sistemler kapsamında Nextion tabanlı arayüzler geliştiriyor, ASP.NET tabanlı web projeleri üzerinde çalışarak teknik yetkinliklerimi sürekli olarak geliştirmeye devam ediyorum.",
+        "Devam eden bir TÜBİTAK projesinde veri toplama, veri analizi ve görüntü işleme süreçlerinde aktif görev almaktayım. Proje kapsamında veri toplama, veri analizi ve görüntü işleme süreçleri üzerinde çalışmalar yürütmekteyim. Bunun yanı sıra gömülü sistemler kapsamında Nextion tabanlı gömülü sistem arayüzleri geliştiriyor ve ASP.NET⁠ tabanlı web projeleri üzerinde çalışarak teknik yetkinliklerimi geliştirmeye devam ediyorum.",
     },
     {
       company: "Newky Bilgi Teknolojileri",

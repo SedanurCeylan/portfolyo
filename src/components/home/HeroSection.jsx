@@ -55,11 +55,13 @@ export default function HeroSection() {
         transition={{ duration: 1, delay: 2.5 }}
         className="text-base sm:text-lg md:text-2xl text-[var(--textrenk)]/80 font-light leading-relaxed relative"
       >
-       Bilgisayar mühendisliği alanında, işlevsel ve kullanıcıyı merkeze alan yazılımlar geliştirmeye odaklanıyorum.<br></br>
-Amacım; karmaşıklığı azaltan, sürdürülebilir çözümler üretmek.
+       Bilgisayar mühendisliği alanında, işlevsel ve kullanıcıyı merkeze alan yazılımlar geliştirmeye odaklanıyorum.
+<br></br>
+Amacım; karmaşıklığı azaltan, sürdürülebilir çözümler üretmek ve gerçek problemlere teknoloji ile değer katan sistemler geliştirmektir.
       </motion.p>
     </div>
   </div>
+  <br />
 </section>
 
 
