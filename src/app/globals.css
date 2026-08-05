@@ -1,5 +1,38 @@
 @import "tailwindcss";
 
+/* Refined editorial hero */
+body .network-hero-layout { grid-template-columns: minmax(0, .92fr) minmax(480px, 1.08fr); gap: clamp(72px, 8vw, 120px); min-height: 760px; padding-top: 128px; padding-bottom: 72px; }
+.hero-coordinate { display: flex; align-items: center; gap: 9px; margin: 0 0 28px; color: var(--muted); font: 800 9px/1 monospace; letter-spacing: .14em; }
+.hero-coordinate span { width: 24px; height: 1px; background: var(--blue); }
+body .network-hero-copy h1 { max-width: 660px; font-size: clamp(4rem, 5.8vw, 6.6rem); line-height: .86; letter-spacing: -.065em; }
+body .network-hero-copy h1 span, body .network-hero-copy h1 strong { display: block; }
+body .network-role { margin-top: 30px; font-size: clamp(17px, 1.5vw, 21px); }
+body .network-fields { margin-top: 13px; }
+body .network-hero-copy .hero-actions { margin-top: 30px; }
+.project-index { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); box-shadow: 0 14px 34px rgba(17,24,39,.055); }
+.project-index-head { display: flex; align-items: center; justify-content: space-between; min-height: 92px; padding: 18px 22px; border-bottom: 1px solid var(--line); }
+.project-index-head > div { display: flex; align-items: center; gap: 13px; }
+.project-index-head > div > span { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--ink); color: var(--paper); font-size: 11px; font-weight: 800; }
+.project-index-head p, .project-index-head small { display: block; margin: 0; }
+.project-index-head p { font-size: 11px; font-weight: 800; letter-spacing: .02em; text-transform: uppercase; }
+.project-index-head small { margin-top: 5px; color: var(--muted); font: 8px monospace; letter-spacing: .08em; }
+.project-index-head > i { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 5px var(--blue-soft); }
+.project-index-list { padding: 0 22px; }
+.project-index-row { display: grid; grid-template-columns: 26px 88px minmax(0,1fr) 18px; align-items: center; gap: 16px; min-height: 118px; border-bottom: 1px solid var(--line); transition: transform .2s ease, color .2s ease; }
+.project-index-row:hover { color: var(--blue); transform: translateX(4px); }
+.project-index-no { color: var(--muted); font: 9px monospace; }
+.project-index-image { position: relative; width: 88px; aspect-ratio: 16/10; overflow: hidden; border-radius: 8px; background: var(--surface-muted); }
+.project-index-copy { min-width: 0; }
+.project-index-copy strong, .project-index-copy small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.project-index-copy strong { color: var(--ink); font-size: clamp(14px, 1.25vw, 17px); letter-spacing: -.02em; }
+.project-index-copy small { margin-top: 7px; color: var(--muted); font: 8px monospace; letter-spacing: .04em; }
+.project-index-row > svg { width: 16px; color: var(--blue); }
+.project-index-foot { display: flex; gap: 8px; padding: 16px 22px; background: var(--surface-muted); }
+.project-index-foot span { padding: 5px 8px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--muted); font-size: 8px; font-weight: 750; text-transform: uppercase; }
+@media (max-width: 980px) { body .network-hero-layout { grid-template-columns: 1fr; gap: 52px; min-height: auto; } body .network-hero-copy h1 { max-width: 760px; } .project-index { width: min(720px,100%); } }
+@media (max-width: 560px) { body .network-hero-layout { width: min(100% - 28px,1320px); padding-top: 112px; } body .network-hero-copy h1 { font-size: clamp(3.5rem,17vw,4.8rem); } .project-index-head { min-height: 80px; } .project-index-list { padding-inline: 16px; } .project-index-row { grid-template-columns: 22px 68px minmax(0,1fr) 15px; gap: 11px; min-height: 102px; } .project-index-image { width: 68px; } }
+@media (prefers-reduced-motion: reduce) { .project-index-row { transition: none; } }
+
 /* Message success */
 .success-page { position: relative; display: grid; place-items: center; min-height: 100svh; overflow: hidden; padding: 130px 24px 80px; background: var(--paper); }
 .success-grid { position: absolute; inset: 72px 0 0; opacity: .12; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(circle at center, #000, transparent 70%); }

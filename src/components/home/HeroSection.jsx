@@ -16,6 +16,7 @@ export default function HeroSection() {
     <div className="hero-grid" aria-hidden="true" />
     <div className="section-wrap network-hero-layout">
       <motion.div className="network-hero-copy" key={language} initial="hidden" animate="visible" transition={{ staggerChildren: reduceMotion ? 0 : .09 }}>
+        <motion.p className="hero-coordinate" variants={reveal}><span />PORTFOLIO · 2026</motion.p>
         <motion.h1 id="hero-title" variants={reveal}><span>{t.firstName}</span> <strong>{t.lastName}</strong></motion.h1>
         <motion.p className="network-role" variants={reveal}>{t.role}</motion.p>
         <motion.p className="network-fields" variants={reveal}>{t.fields}</motion.p>
@@ -24,7 +25,7 @@ export default function HeroSection() {
           <a href="/api/cv" target="_blank" rel="noreferrer" className="button button-secondary">{t.cv}<ArrowDownTrayIcon aria-hidden="true" /></a>
         </motion.div>
       </motion.div>
-      <ProjectNetwork projects={content[language].projects.filter((project) => project.visible !== false).sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured))).slice(0, 3)} label={t.network} reduceMotion={reduceMotion} />
+      <ProjectNetwork projects={content[language].projects.filter((project) => project.visible !== false).sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured))).slice(0, 3)} label={t.network} />
     </div>
   </section>;
 }
