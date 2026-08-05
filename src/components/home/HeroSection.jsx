@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import { ArrowDownIcon, ArrowDownTrayIcon } from "@heroicons/react/24/outline";
 import { useSitePreferences } from "@/context/SitePreferences";
 import { useSiteContent } from "@/context/SiteContent";
@@ -10,6 +11,7 @@ export default function HeroSection() {
   const { content } = useSiteContent();
   const reduceMotion = useReducedMotion();
   const t = content[language].hero;
+  const profileImage = content[language].about.image;
   const focusAreas = t.fields.split("·").map((item) => item.trim()).filter(Boolean);
   const visualCopy = language === "tr"
     ? { label: "Çalışma alanı", status: "Yeni fikirlere açık", location: "Isparta · Türkiye", note: "Araştırma ile ürünü buluşturan dijital deneyimler." }
@@ -30,7 +32,10 @@ export default function HeroSection() {
       </motion.div>
       <motion.aside className="hero-profile-board" key={`profile-${language}`} initial={{ opacity: 0, x: reduceMotion ? 0 : 28 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: .55, delay: .18 }} aria-label={visualCopy.label}>
         <div className="hero-profile-top"><span>{visualCopy.label}</span><i aria-hidden="true" /></div>
-        <div className="hero-monogram" aria-hidden="true"><span>S</span><span>C</span><small>01</small></div>
+        <div className="hero-identity-mark">
+          <div className="hero-monogram" aria-hidden="true"><span>S</span><span>C</span><small>01</small></div>
+          <div className="hero-mini-portrait"><Image src={profileImage} alt={`${t.firstName} ${t.lastName}`} fill className="object-cover" sizes="112px" unoptimized={profileImage.startsWith("/api/")} /></div>
+        </div>
         <p className="hero-profile-note">{visualCopy.note}</p>
         <div className="hero-focus-list">{focusAreas.map((area, index) => <div key={area}><span>0{index + 1}</span><strong>{area}</strong></div>)}</div>
         <div className="hero-profile-foot"><p><i aria-hidden="true" />{visualCopy.status}</p><span>{visualCopy.location}</span></div>
