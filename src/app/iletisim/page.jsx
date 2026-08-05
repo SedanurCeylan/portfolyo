@@ -1,18 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
+import { useSitePreferences } from "@/context/SitePreferences";
+import { useRouter } from "next/navigation";
+
+const copy={tr:{title:"İletişim",intro:"Bir proje, iş birliği veya yalnızca merhaba demek için bana yazabilirsiniz. En kısa sürede dönüş yapacağım.",name:"Adınız",namePlaceholder:"Adınızı girin",email:"E-posta",message:"Mesajınız",messagePlaceholder:"Projenizden veya fikrinizden bahsedin...",send:"Mesajı gönder",sending:"Gönderiliyor…",fallback:"Mesaj gönderilemedi."},en:{title:"Contact",intro:"Have a project, a collaboration in mind, or simply want to say hello? Send me a message and I'll get back to you shortly.",name:"Your name",namePlaceholder:"Enter your name",email:"Email",message:"Your message",messagePlaceholder:"Tell me about your project or idea...",send:"Send message",sending:"Sending…",fallback:"Message could not be sent."}};
 
 export default function ContactPage() {
+  const {language}=useSitePreferences();const t=copy[language];
+  const router=useRouter();
+  const [submitting,setSubmitting]=useState(false);
+  const [error,setError]=useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,28 +25,9 @@ export default function ContactPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-
-    try {
-      const res = await fetch("https://formspree.io/f/mgvyvbrw", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (res.ok) {
-        router.push("/tesekkur");
-      } else {
-        alert("Gönderim başarısız oldu, lütfen tekrar deneyin.");
-      }
-    } catch (error) {
-      alert("Bir hata oluştu, lütfen tekrar deneyin.");
-    } finally {
-      setLoading(false);
-    }
+    setSubmitting(true);setError("");
+    try { const response=await fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(formData)});const data=await response.json();if(!response.ok)throw new Error(data.error||t.fallback);router.push("/tesekkur"); }
+    catch(submitError){setError(submitError.message||t.fallback);setSubmitting(false);}
   };
 
   return (
@@ -57,13 +43,14 @@ export default function ContactPage() {
         transition={{ duration: 0.7 }}
         className="text-center"
       >
+        <input type="text" name="website" tabIndex="-1" autoComplete="off" className="hidden" aria-hidden="true" />
 
         <h1 className="text-4xl md:text-6xl font-extrabold text-center mb-5 text-[var(--textrenk)] leading-tight">
-          İletişim
+          {t.title}
         </h1>
 
         <p className="text-center text-base md:text-lg text-[var(--textrenk)]/80 max-w-2xl mx-auto leading-8">
-         Herhangi bir sorunuz varsa, aşağıdaki formu doldurmanız yeterli. En kısa sürede sizinle iletişime geçeceğim.
+         {t.intro}
         </p>
       </motion.div>
 
@@ -83,7 +70,7 @@ export default function ContactPage() {
                 htmlFor="name"
                 className="mb-2 block text-sm md:text-base font-semibold text-[var(--textrenk)]"
               >
-                Adınız
+                {t.name}
               </label>
               <input
                 id="name"
@@ -92,7 +79,7 @@ export default function ContactPage() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                placeholder="Adınızı girin"
+                placeholder={t.namePlaceholder}
                 className="w-full rounded-2xl border border-[var(--textrenk)]/15 bg-[var(--bgrenk)]/80 px-4 py-3.5 text-[var(--textrenk)] placeholder:text-[var(--textrenk)]/45 outline-none transition duration-300 focus:border-[var(--textrenk)]/40 focus:ring-4 focus:ring-[var(--textrenk)]/10"
               />
             </div>
@@ -102,7 +89,7 @@ export default function ContactPage() {
                 htmlFor="email"
                 className="mb-2 block text-sm md:text-base font-semibold text-[var(--textrenk)]"
               >
-                E-posta
+                {t.email}
               </label>
               <input
                 id="email"
@@ -122,7 +109,7 @@ export default function ContactPage() {
               htmlFor="message"
               className="mb-2 block text-sm md:text-base font-semibold text-[var(--textrenk)]"
             >
-              Mesajınız
+              {t.message}
             </label>
             <textarea
               id="message"
@@ -131,21 +118,22 @@ export default function ContactPage() {
               onChange={handleChange}
               rows={6}
               required
-              placeholder="Mesajınızı buraya yazın..."
+              placeholder={t.messagePlaceholder}
               className="w-full rounded-2xl border border-[var(--textrenk)]/15 bg-[var(--bgrenk)]/80 px-4 py-3.5 text-[var(--textrenk)] placeholder:text-[var(--textrenk)]/45 outline-none transition duration-300 focus:border-[var(--textrenk)]/40 focus:ring-4 focus:ring-[var(--textrenk)]/10 resize-none"
             />
           </div>
 
           <motion.button
             type="submit"
-            disabled={loading}
+            disabled={submitting}
             whileTap={{ scale: 0.98 }}
             whileHover={{ scale: 1.01 }}
             className="group w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-[var(--textrenk)] px-6 py-4 text-base md:text-lg font-semibold text-[var(--bgrenk)] shadow-[0_12px_30px_rgba(0,0,0,0.16)] transition duration-300 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
           >
             <PaperAirplaneIcon className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            {loading ? "Gönderiliyor..." : "Mesajı Gönder"}
+            {submitting?t.sending:t.send}
           </motion.button>
+          {error&&<p className="text-sm text-red-600" role="alert">{error}</p>}
         </div>
       </motion.form>
     </section>

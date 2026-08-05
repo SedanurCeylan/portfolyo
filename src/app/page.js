@@ -1,19 +1,10 @@
-"use client";
-
 import HeroSection from "@/components/home/HeroSection";
-import AboutMeSection from "@/components/home/AboutMe";
-import EducationSection from "@/components/home/EducationSection";
 import ProjectsSection from "@/components/home/ProjectsSection";
+import AboutMeSection from "@/components/home/AboutMe";
 import ExperienceSection from "@/components/home/ExperienceSection";
+import EducationSection from "@/components/home/EducationSection";
+import SkillsSection from "@/components/home/SkillsSection";
 
 export default function Home() {
-  return (
-    <div>
-      <HeroSection />
-      <AboutMeSection />
-      <EducationSection />
-      <ProjectsSection />
-      <ExperienceSection />
-    </div>
-  );
+  return <main><HeroSection/><SkillsSection/><AboutMeSection/><ProjectsSection/><ExperienceSection/><EducationSection/></main>;
 }

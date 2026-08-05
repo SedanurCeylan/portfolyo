@@ -2,8 +2,12 @@
 
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
+import { useSitePreferences } from "@/context/SitePreferences";
+
+const copy={tr:{title:"Teşekkürler!",text:"Mesajınız başarıyla gönderildi. En kısa sürede sizinle iletişime geçeceğim.",home:"Ana sayfaya dön"},en:{title:"Thank you!",text:"Your message has been sent successfully. I'll get back to you as soon as possible.",home:"Return home"}};
 
 export default function Tesekkur() {
+  const{language}=useSitePreferences();const t=copy[language];
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[var(--bgrenk)] text-[var(--textrenk)] p-6">
       <motion.div
@@ -21,7 +25,7 @@ export default function Tesekkur() {
         transition={{ delay: 0.2, duration: 0.5 }}
         className="text-5xl font-bold mb-4 text-center drop-shadow-sm"
       >
-        Teşekkürler!
+        {t.title}
       </motion.h1>
 
       <motion.p
@@ -30,8 +34,7 @@ export default function Tesekkur() {
         transition={{ delay: 0.4, duration: 0.5 }}
         className="text-lg max-w-xl text-center text-opacity-90"
       >
-        Mesajınız başarıyla gönderildi. En kısa sürede sizinle iletişime
-        geçeceğim.
+        {t.text}
       </motion.p>
 
       <motion.a
@@ -41,7 +44,7 @@ export default function Tesekkur() {
         transition={{ type: "spring", stiffness: 200 }}
         className="inline-block px-6 py-3 rounded-lg bg-[var(--textrenk)] text-[var(--bgrenk)] font-semibold mt-6 shadow-md hover:shadow-lg transition duration-300"
       >
-        Ana Sayfaya Dön
+        {t.home}
       </motion.a>
     </div>
   );
