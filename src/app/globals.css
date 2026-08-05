@@ -481,6 +481,10 @@ input, textarea { background: color-mix(in srgb, var(--surface) 90%, transparent
   .hero-project-meta { align-items: flex-start; flex-direction: column; }
 }
 
+/* About stays text-only; the portrait is reserved for the hero. */
+.about-simple { display: block; }
+.about-copy { max-width: 760px; margin-inline: auto; }
+
 /* Balanced portfolio hero */
 .hero-shell { overflow: hidden; }
 .hero-shell .hero-grid { inset: 72px 0 0; opacity: .1; background-size: 72px 72px; mask-image: linear-gradient(to bottom, #000 0%, transparent 92%); }
@@ -560,6 +564,11 @@ input, textarea { background: color-mix(in srgb, var(--surface) 90%, transparent
 .about-copy > p:not(.mini-label) { max-width: 620px; margin: 0 0 14px; color: var(--muted); font-size: 15px; line-height: 1.8; }
 .about-copy ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 0; padding: 0; list-style: none; }
 .about-copy li { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--muted); font-size: 10px; font-weight: 700; }
+.about-simple { display: block; }
+.about-copy { max-width: 760px; margin-inline: auto; }
+.about-heading-line { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.about-heading-line .mini-label { margin: 0; }
+.about-heading-line > span { color: var(--muted); font: 500 9px/1 monospace; letter-spacing: .08em; }
 
 /* Project typography spacing fix */
 .case-row { grid-template-columns: 42px minmax(320px,.85fr) minmax(340px,1.15fr); gap: clamp(32px,5vw,68px); padding: 38px 0; }
@@ -593,6 +602,9 @@ input, textarea { background: color-mix(in srgb, var(--surface) 90%, transparent
   .about-copy h2 { font-size: 38px; }
   .case-copy h3 { font-size: 24px; }
 }
+
+.about-simple { display: block; }
+.about-copy { max-width: 760px; margin-inline: auto; }
 
 /* Authoritative hero layout */
 body .hero-shell { overflow: hidden; }
