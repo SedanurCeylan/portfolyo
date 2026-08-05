@@ -9,6 +9,22 @@ body .network-hero-copy h1 span, body .network-hero-copy h1 strong { display: bl
 body .network-role { margin-top: 30px; font-size: clamp(17px, 1.5vw, 21px); }
 body .network-fields { margin-top: 13px; }
 body .network-hero-copy .hero-actions { margin-top: 30px; }
+.hero-profile-board { position: relative; min-width: 0; overflow: hidden; padding: clamp(24px,3vw,38px); border: 1px solid var(--line); border-radius: 26px; background: color-mix(in srgb, var(--surface) 88%, transparent); box-shadow: 0 18px 48px rgba(17,24,39,.06); }
+.hero-profile-board::before { content: ""; position: absolute; top: -90px; right: -70px; width: 240px; height: 240px; border: 1px solid color-mix(in srgb,var(--blue) 24%,transparent); border-radius: 50%; box-shadow: 0 0 0 44px color-mix(in srgb,var(--blue) 4%,transparent), 0 0 0 88px color-mix(in srgb,var(--blue) 3%,transparent); }
+.hero-profile-top { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; color: var(--muted); font: 500 9px/1 monospace; letter-spacing: .14em; text-transform: uppercase; }
+.hero-profile-top i { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 5px var(--blue-soft); }
+.hero-monogram { position: relative; z-index: 1; display: flex; align-items: baseline; width: max-content; margin: clamp(52px,8vw,92px) 0 34px; color: var(--ink); font-size: clamp(82px,10vw,142px); font-weight: 650; line-height: .62; letter-spacing: -.13em; }
+.hero-monogram span:last-of-type { color: var(--blue); }
+.hero-monogram small { margin-left: 24px; color: var(--muted); font: 500 9px/1 monospace; letter-spacing: .08em; }
+.hero-profile-note { position: relative; z-index: 1; max-width: 390px; margin: 0 0 38px; color: var(--muted); font-size: clamp(14px,1.3vw,17px); line-height: 1.6; }
+.hero-focus-list { position: relative; z-index: 1; border-top: 1px solid var(--line); }
+.hero-focus-list div { display: grid; grid-template-columns: 32px 1fr; gap: 12px; align-items: center; min-height: 54px; border-bottom: 1px solid var(--line); }
+.hero-focus-list span { color: var(--muted); font: 500 8px monospace; }
+.hero-focus-list strong { font-size: 13px; font-weight: 550; }
+.hero-profile-foot { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 24px; color: var(--muted); font-size: 9px; }
+.hero-profile-foot p { display: flex; align-items: center; gap: 8px; margin: 0; color: var(--ink); }
+.hero-profile-foot p i { width: 7px; height: 7px; border-radius: 50%; background: #36b37e; }
+@media (max-width: 560px) { .hero-profile-board { border-radius: 20px; } .hero-monogram { margin-block: 58px 30px; } .hero-profile-foot { align-items: flex-start; flex-direction: column; } }
 .project-index { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); box-shadow: 0 14px 34px rgba(17,24,39,.055); }
 .project-index-head { display: flex; align-items: center; justify-content: space-between; min-height: 92px; padding: 18px 22px; border-bottom: 1px solid var(--line); }
 .project-index-head > div { display: flex; align-items: center; gap: 13px; }
