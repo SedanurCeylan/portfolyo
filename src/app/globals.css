@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+/* Message success */
+.success-page { position: relative; display: grid; place-items: center; min-height: 100svh; overflow: hidden; padding: 130px 24px 80px; background: var(--paper); }
+.success-grid { position: absolute; inset: 72px 0 0; opacity: .12; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(circle at center, #000, transparent 70%); }
+.success-card { position: relative; z-index: 1; width: min(620px, 100%); padding: clamp(32px, 6vw, 58px); border: 1px solid var(--line); border-radius: 24px; background: color-mix(in srgb, var(--surface) 94%, transparent); box-shadow: 0 16px 42px rgba(17,24,39,.07); text-align: left; }
+.success-mark { display: grid; place-items: center; width: 54px; height: 54px; margin-bottom: 34px; border: 1px solid color-mix(in srgb, var(--blue) 35%, var(--line)); border-radius: 50%; background: var(--blue-soft); color: var(--blue); }
+.success-mark svg { width: 25px; stroke-width: 2.2; }
+.success-label { display: flex; align-items: center; gap: 9px; margin: 0 0 17px; color: var(--muted); font: 800 9px/1 monospace; letter-spacing: .14em; }
+.success-label span { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
+.success-card h1 { margin: 0; color: var(--ink); font-size: clamp(48px, 7vw, 76px); line-height: .96; letter-spacing: -.055em; }
+.success-copy { max-width: 490px; margin: 24px 0 0; color: var(--muted); font-size: clamp(16px, 2vw, 19px); line-height: 1.7; }
+.success-button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; margin-top: 32px; padding: 0 18px; border: 1px solid var(--ink); border-radius: 11px; background: var(--ink); color: var(--paper) !important; font-size: 12px; font-weight: 800; transition: transform .2s ease, background-color .2s ease, border-color .2s ease; }
+.success-button svg { width: 15px; }
+.success-button:hover { border-color: var(--blue); background: var(--blue); color: #fff !important; transform: translateY(-2px); }
+.success-note { margin: 17px 0 0; color: var(--muted); font-size: 10px; }
+@media (max-width: 520px) { .success-page { padding: 110px 14px 56px; } .success-card { padding: 28px 22px; border-radius: 18px; } .success-mark { margin-bottom: 28px; } .success-button { width: 100%; } }
+@media (prefers-reduced-motion: reduce) { .success-button { transition: none; } }
+
 /* Local content admin */
 .admin-page { min-height: 100vh; padding: 118px 0 80px; background: var(--paper); }
 .admin-shell { width: min(1040px, calc(100% - 40px)); margin-inline: auto; }

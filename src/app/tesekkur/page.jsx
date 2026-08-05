@@ -1,51 +1,29 @@
 "use client";
 
-import { CheckCircleIcon } from "@heroicons/react/24/outline";
-import { motion } from "framer-motion";
+import Link from "next/link";
+import { CheckIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { motion, useReducedMotion } from "framer-motion";
 import { useSitePreferences } from "@/context/SitePreferences";
 
-const copy={tr:{title:"Teşekkürler!",text:"Mesajınız başarıyla gönderildi. En kısa sürede sizinle iletişime geçeceğim.",home:"Ana sayfaya dön"},en:{title:"Thank you!",text:"Your message has been sent successfully. I'll get back to you as soon as possible.",home:"Return home"}};
+const copy = {
+  tr: { label: "MESAJ ALINDI", title: "Teşekkürler.", text: "Mesajınız başarıyla ulaştı. En kısa sürede sizinle iletişime geçeceğim.", home: "Ana sayfaya dön", note: "Genellikle 1–2 iş günü içinde yanıtlıyorum." },
+  en: { label: "MESSAGE RECEIVED", title: "Thank you.", text: "Your message has arrived successfully. I'll get back to you as soon as possible.", home: "Return home", note: "I usually reply within 1–2 business days." },
+};
 
-export default function Tesekkur() {
-  const{language}=useSitePreferences();const t=copy[language];
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[var(--bgrenk)] text-[var(--textrenk)] p-6">
-      <motion.div
-        initial={{ scale: 0.5, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 120, damping: 10 }}
-        className="mb-6"
-      >
-        <CheckCircleIcon className="w-24 h-24 text-green-500" />
-      </motion.div>
+export default function ThankYouPage() {
+  const { language } = useSitePreferences();
+  const reduceMotion = useReducedMotion();
+  const t = copy[language];
 
-      <motion.h1
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-        className="text-5xl font-bold mb-4 text-center drop-shadow-sm"
-      >
-        {t.title}
-      </motion.h1>
-
-      <motion.p
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.4, duration: 0.5 }}
-        className="text-lg max-w-xl text-center text-opacity-90"
-      >
-        {t.text}
-      </motion.p>
-
-      <motion.a
-        href="/"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        transition={{ type: "spring", stiffness: 200 }}
-        className="inline-block px-6 py-3 rounded-lg bg-[var(--textrenk)] text-[var(--bgrenk)] font-semibold mt-6 shadow-md hover:shadow-lg transition duration-300"
-      >
-        {t.home}
-      </motion.a>
-    </div>
-  );
+  return <main className="success-page">
+    <div className="success-grid" aria-hidden="true" />
+    <motion.section className="success-card" aria-labelledby="success-title" initial={reduceMotion ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .55, ease: [0.22, 1, 0.36, 1] }}>
+      <div className="success-mark" aria-hidden="true"><CheckIcon /></div>
+      <p className="success-label"><span />{t.label}</p>
+      <h1 id="success-title">{t.title}</h1>
+      <p className="success-copy">{t.text}</p>
+      <Link href="/" className="success-button"><ArrowLeftIcon aria-hidden="true" />{t.home}</Link>
+      <p className="success-note">{t.note}</p>
+    </motion.section>
+  </main>;
 }
