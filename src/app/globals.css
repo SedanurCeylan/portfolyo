@@ -667,7 +667,9 @@ body .network-hero-layout { grid-template-columns: minmax(0,52fr) minmax(340px,4
 .about-heading-line { justify-content: center; }
 body h2, body h3 { letter-spacing: -.025em; }
 body p { line-height: 1.72; }
-body .section-heading h2, body .about-copy h2, body .education-grid h2, body .site-footer h2 { line-height: 1.12; letter-spacing: -.03em; }
+body .case-head h2, body .skill-map-title h2, body .experience-head h2, body .about-copy h2, body .education-grid h2 { margin-top: 0; font-size: clamp(40px,4.6vw,58px); font-weight: 650; line-height: 1.12; letter-spacing: -.03em; }
+body .about-heading-line + h2, body .education-grid > div > h2 { margin-top: 14px; }
+body .site-footer h2 { line-height: 1.12; letter-spacing: -.03em; }
 .network-role { line-height: 1.35; letter-spacing: -.01em; }
 .network-fields, .mini-label, .eyebrow { line-height: 1.65; }
 @media (max-width: 980px) { body .network-hero-layout { grid-template-columns: 1fr; width: min(760px,calc(100% - 64px)); } .hero-photo-simple { order: -1; min-height: 440px; } }
@@ -1034,7 +1036,7 @@ body .hero-project-card { position: relative; inset: auto; width: 100%; transfor
 .project-card .tag-row span { border-color: #303c4f; background: transparent; color: #9ca9b9; }
 .project-links a, .all-projects a { border-color: #47556a; color: #f5f7fa; }
 
-.experience-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 48px; }
+.experience-head { display: flex; align-items: flex-start; flex-direction: column; gap: 14px; margin-bottom: 48px; }
 .experience-head h2 { margin: 0; font-size: clamp(38px,5vw,60px); letter-spacing: -.05em; }
 .experience-section .timeline-row { grid-template-columns: 145px minmax(220px,1fr) minmax(170px,.7fr) 40px; align-items: center; padding: 26px 0; }
 .experience-section .timeline-row h3 { margin-bottom: 0; }
