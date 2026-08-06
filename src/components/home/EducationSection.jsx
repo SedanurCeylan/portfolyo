@@ -1,4 +1,18 @@
 "use client";
+
+import { motion } from "framer-motion";
 import { useSitePreferences } from "@/context/SitePreferences";
 import { useSiteContent } from "@/context/SiteContent";
-export default function EducationSection(){const{language}=useSitePreferences();const{content}=useSiteContent();const t=content[language].education;return <section className="education-section"><div className="section-wrap education-grid"><div><p className="mini-label">{t.label}</p><h2>{t.title}</h2></div><div className="education-list">{t.items.map((item,index)=><article key={`${item.school}-${index}`}><time>{item.period}</time><h3>{item.degree}<br/><span>{item.type}</span></h3><p>{item.school}</p></article>)}</div></div></section>}
+
+const copy = { tr: { title: ["ÖĞRENMEYE", "DEVAM EDİYORUM"], file: "Eğitim Belgeleri" }, en: { title: ["ALWAYS", "LEARNING"], file: "Education Files" } };
+
+export default function EducationSection() {
+  const { language } = useSitePreferences();
+  const { content } = useSiteContent();
+  const t = content[language].education;
+  const c = copy[language];
+  return <section className="mac-education" aria-labelledby="education-title">
+    <header className="mac-education-header"><span><b>🎓</b>{t.label}</span><h2 id="education-title">{c.title.map((line) => <strong key={line}>{line}</strong>)}</h2></header>
+    <motion.div className="education-window" initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}><header><div><i /><i /><i /></div><span>{c.file}</span><small>⌘</small></header><div className="education-window-body"><aside><span>⭐️</span><span>📚</span><span>🗂️</span></aside><div className="education-files">{t.items.map((item,index) => <article key={`${item.school}-${index}`}><div className="education-file-icon">📄</div><div><time>{item.period}</time><h3>{item.degree}</h3><p>{item.type}</p><small>{item.school}</small></div><b>{String(index + 1).padStart(2,"0")}</b></article>)}</div></div></motion.div>
+  </section>;
+}
