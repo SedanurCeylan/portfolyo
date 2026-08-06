@@ -268,8 +268,9 @@ body .network-hero-copy .hero-actions { margin-top: 30px; }
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Avenir Next", "Segoe UI", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+html { width: 100%; overflow-x: clip; scroll-behavior: smooth; }
+body { width: 100%; min-width: 0; margin: 0; overflow-x: clip; background: var(--paper); color: var(--ink); font-family: "Avenir Next", "Segoe UI", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+main, section { max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button, input, textarea { font: inherit; }
 body, .site-nav, .project-card, .education-section, input, textarea { transition: background-color .25s, color .25s, border-color .25s; }
@@ -661,8 +662,8 @@ body .network-hero-layout { grid-template-columns: minmax(0,52fr) minmax(340px,4
 .about-copy > p:not(.mini-label) { margin-right: auto; margin-left: auto; }
 .about-copy ul { justify-content: center; }
 .about-heading-line { justify-content: center; }
-@media (max-width: 980px) { body .network-hero-layout { grid-template-columns: 1fr; width: min(760px,calc(100% - 64px)); } .hero-photo-simple { min-height: 440px; } }
-@media (max-width: 560px) { body .network-hero-layout { width: min(100% - 36px,760px); } .hero-photo-simple { min-height: 390px; } .hero-photo-simple .hero-pinned-photo-wrap { width: min(78vw,290px); } }
+@media (max-width: 980px) { body .network-hero-layout { grid-template-columns: 1fr; width: min(760px,calc(100% - 64px)); } .hero-photo-simple { order: -1; min-height: 440px; } }
+@media (max-width: 560px) { body .network-hero-layout { width: calc(100% - 32px); gap: 24px; padding-top: 104px; } .hero-photo-simple { min-height: 350px; } .hero-photo-simple .hero-pinned-photo-wrap { width: min(76vw,270px); } .section-wrap { width: calc(100% - 28px); } .education-section, .site-footer { width: 100%; overflow: hidden; } }
 
 .about-simple { display: block; }
 .about-copy { max-width: 760px; margin-inline: auto; }
