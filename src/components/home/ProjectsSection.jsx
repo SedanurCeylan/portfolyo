@@ -2,34 +2,35 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
+import { motion, useReducedMotion } from "framer-motion";
+import { FolderIcon } from "@heroicons/react/24/outline";
 import { useSitePreferences } from "@/context/SitePreferences";
 import { useSiteContent } from "@/context/SiteContent";
 
 const copy = {
-  tr: { label: "02 / Projeler", title: "Seçili çalışmalar", all: "GitHub'daki tüm projeler", detail: "Projeyi incele" },
-  en: { label: "02 / Projects", title: "Selected work", all: "All projects on GitHub", detail: "View case study" },
+  tr: { label: "Projeler", title: ["HİKÂYE ANLATAN", "PROJELER"], open: "Projeyi aç", all: "Tüm GitHub projeleri" },
+  en: { label: "Projects", title: ["PROJECTS THAT", "TELL STORIES"], open: "Open project", all: "All GitHub projects" },
 };
 
 export default function ProjectsSection() {
   const { language } = useSitePreferences();
   const { content } = useSiteContent();
+  const reduceMotion = useReducedMotion();
   const t = copy[language];
   const projects = content[language].projects.filter((project) => project.visible !== false);
 
-  return <section id="projeler" className="case-section">
-    <div className="section-wrap section-space">
-      <div className="case-head"><p className="mini-label">{t.label}</p><h2>{t.title}</h2></div>
-      <div className="case-list">{projects.map((project, index) => <motion.article key={project.no} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * .05 }} className="case-row">
-        <div className="case-number">{project.no}</div>
-        <Link href={project.externalUrl || `/projeler/${project.slug}`} target={project.externalUrl ? "_blank" : undefined} className="case-image"><Image src={project.image} alt={project.title} fill className="object-cover" sizes="(max-width: 720px) 100vw, 38vw" /></Link>
-        <div className="case-copy">
-          <p>{project.type}</p><h3><Link href={project.externalUrl || `/projeler/${project.slug}`} target={project.externalUrl ? "_blank" : undefined}>{project.title}</Link></h3><span>{project.text}</span><small>{project.meta}</small>
-          <div><Link href={project.externalUrl || `/projeler/${project.slug}`} target={project.externalUrl ? "_blank" : undefined}>{t.detail} <ArrowUpRightIcon /></Link>{project.github && <a href={project.github} target="_blank" rel="noreferrer">GitHub <ArrowUpRightIcon /></a>}</div>
-        </div>
-      </motion.article>)}</div>
-      <a className="case-all" href="https://github.com/SedanurCeylan" target="_blank" rel="noreferrer">{t.all} <ArrowUpRightIcon /></a>
-    </div>
+  return <section id="projeler" className="desktop-projects" aria-labelledby="projects-title">
+    <div className="desktop-projects-wallpaper" aria-hidden="true" />
+    <header className="desktop-projects-title"><span><b><FolderIcon /></b>{t.label}</span><h2 id="projects-title">{t.title.map((line) => <strong key={line}>{line}</strong>)}</h2></header>
+    <div className="desktop-project-grid">{projects.map((project, index) => {
+      const href = project.externalUrl || `/projeler/${project.slug}`;
+      return <motion.article key={`${project.slug}-${index}`} className={`desktop-project-card project-card-${index % 6}`} initial={reduceMotion ? false : { opacity: 0, y: 30, rotate: 0 }} whileInView={{ opacity: 1, y: 0, rotate: [-4, 1, 4, -2, 3, -3][index % 6] }} viewport={{ once: true, amount: .15 }} transition={{ delay: index * .06 }}>
+        <i className={`project-paperclip clip-${index % 4}`} aria-hidden="true" />
+        <div className="desktop-browser-bar" aria-hidden="true"><span /><span /><span /></div>
+        <Link href={href} target={project.externalUrl ? "_blank" : undefined} aria-label={`${project.title} — ${t.open}`} className="desktop-project-image"><Image src={project.image} alt={project.title} fill className="object-cover" sizes="(max-width: 720px) 88vw, 32vw" /></Link>
+        <footer><h3>{project.title}</h3><div><span>{project.type}</span><span>{project.technologies?.slice(0,2).join(" · ")}</span><span>{project.no}</span></div></footer>
+      </motion.article>;
+    })}</div>
+    <a className="desktop-project-all" href="https://github.com/SedanurCeylan" target="_blank" rel="noreferrer">{t.all} ↗</a>
   </section>;
 }
