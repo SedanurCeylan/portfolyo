@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeftIcon, ArrowUpRightIcon } from "@heroicons/react/24/outline";
 import { useSitePreferences } from "@/context/SitePreferences";
 
 const projects={
@@ -28,6 +27,15 @@ const projects={
   }
 };
 
-const ui={tr:{back:"Projelere dön",problem:"Problem",approach:"Yaklaşım",result:"Çıktı",tech:"Teknolojiler",links:"Bağlantılar"},en:{back:"Back to projects",problem:"Problem",approach:"Approach",result:"Outcome",tech:"Technology",links:"Links"}};
+const ui={tr:{back:"Projelere dön",problem:"Problem",approach:"Nasıl çözdüm?",result:"Ortaya ne çıktı?",tech:"Kullanılan araçlar",links:"Projeyi incele",case:"Proje dosyası",gallery:"Ekran görüntüleri"},en:{back:"Back to projects",problem:"The problem",approach:"How I solved it",result:"The outcome",tech:"Tools used",links:"Explore project",case:"Case study",gallery:"Screenshots"}};
 
-export default function ProjectDetail({slug}){const{language}=useSitePreferences();const project=projects[slug];if(!project)return null;const p=project[language];const t=ui[language];return <main className="project-detail"><div className="section-wrap"><Link href="/#projeler" className="detail-back"><ArrowLeftIcon/>{t.back}</Link><header className="detail-hero"><div><p>{p.no} / {p.type}</p><h1>{p.title}</h1><span>{p.summary}</span></div><div className="detail-cover"><Image src={project.images[0]} alt={p.title} fill priority className="object-cover" sizes="(max-width: 800px) 100vw, 48vw"/></div></header><section className="detail-body"><aside><p>{t.tech}</p><div>{p.stack.map(item=><span key={item}>{item}</span>)}</div>{project.links.length>0&&<><p>{t.links}</p><div className="detail-links">{project.links.map(link=><a key={link.url} href={link.url} target="_blank" rel="noreferrer">{link.label}<ArrowUpRightIcon/></a>)}</div></>}</aside><div className="detail-story"><article><span>01</span><div><h2>{t.problem}</h2><p>{p.problem}</p></div></article><article><span>02</span><div><h2>{t.approach}</h2><p>{p.approach}</p></div></article><article><span>03</span><div><h2>{t.result}</h2><p>{p.result}</p></div></article></div></section>{project.images.length>1&&<section className="detail-gallery">{project.images.slice(1).map((image,index)=><div key={image}><Image src={image} alt={`${p.title} ${index+2}`} fill className="object-cover" sizes="(max-width: 720px) 100vw, 50vw"/></div>)}</section>}</div></main>}
+export default function ProjectDetail({slug}) {
+  const { language } = useSitePreferences();
+  const project = projects[slug];
+  if (!project) return null;
+  const p = project[language];
+  const t = ui[language];
+  const stories = [{label:t.problem,text:p.problem,color:"pink"},{label:t.approach,text:p.approach,color:"blue"},{label:t.result,text:p.result,color:"yellow"}];
+
+  return <main className="project-detail"><div className="detail-grid-bg" aria-hidden="true"/><div className="detail-shell"><Link href="/#projeler" className="detail-back"><span>‹</span>{t.back}</Link><header className="detail-window"><div className="detail-window-bar"><div><i/><i/><i/></div><span>{t.case} — {p.no}</span><small>🗂️</small></div><div className="detail-window-content"><div className="detail-intro"><p>{p.type}</p><h1>{p.title}</h1><span>{p.summary}</span><div className="detail-stack">{p.stack.map(item=><b key={item}>{item}</b>)}</div>{project.links.length>0&&<div className="detail-links">{project.links.map(link=><a key={link.url} href={link.url} target="_blank" rel="noreferrer">{link.label} ↗</a>)}</div>}</div><div className="detail-cover"><div className="detail-image-bar"><i/><i/><i/></div><Image src={project.images[0]} alt={p.title} fill priority className="object-cover" sizes="(max-width: 800px) 100vw, 48vw"/><em>📎</em></div></div></header><section className="detail-story">{stories.map((story,index)=><article className={`detail-note detail-note-${story.color}`} key={story.label}><span>0{index+1}</span><div><h2>{story.label}</h2><p>{story.text}</p></div><i aria-hidden="true">📌</i></article>)}</section>{project.images.length>1&&<section className="detail-gallery-section"><header><span>🖼️</span><h2>{t.gallery}</h2></header><div className="detail-gallery">{project.images.slice(1).map((image,index)=><div key={image}><div><i/><i/><i/></div><Image src={image} alt={`${p.title} ${index+2}`} fill className="object-cover" sizes="(max-width: 720px) 100vw, 50vw"/></div>)}</div></section>}</div></main>;
+}
