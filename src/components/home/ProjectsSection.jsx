@@ -27,7 +27,7 @@ export default function ProjectsSection() {
         <i className={`project-paperclip clip-${index % 4}`} aria-hidden="true" />
         <div className="desktop-browser-bar" aria-hidden="true"><span /><span /><span /></div>
         <Link href={href} target={project.externalUrl ? "_blank" : undefined} aria-label={`${project.title} — ${t.open}`} className="desktop-project-image"><Image src={project.image} alt={project.title} fill className="object-cover" sizes="(max-width: 720px) 88vw, 32vw" /></Link>
-        <footer><h3>{project.title}</h3><div><span>{project.type}</span><span>{project.technologies?.slice(0,2).join(" · ")}</span><span>{project.no}</span></div></footer>
+        <div className="desktop-project-copy"><div><p>{project.type}</p><h3>{project.title}</h3></div><span>{project.text}</span><footer><div>{project.technologies?.slice(0,3).map((technology) => <small key={technology}>{technology}</small>)}</div><Link href={href} target={project.externalUrl ? "_blank" : undefined}>{t.open} ↗</Link></footer></div>
       </motion.article>;
     })}</div>
     <a className="desktop-project-all" href="https://github.com/SedanurCeylan" target="_blank" rel="noreferrer">{t.all} ↗</a>

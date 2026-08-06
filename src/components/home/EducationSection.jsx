@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useSitePreferences } from "@/context/SitePreferences";
 import { useSiteContent } from "@/context/SiteContent";
 
-const copy = { tr: { title: ["ÖĞRENMEYE", "DEVAM EDİYORUM"], file: "Eğitim Belgeleri" }, en: { title: ["ALWAYS", "LEARNING"], file: "Education Files" } };
+const copy = { tr: { title: ["AKADEMİK", "YOLCULUĞUM"], file: "Eğitim Arşivi" }, en: { title: ["ACADEMIC", "JOURNEY"], file: "Education Archive" } };
 
 export default function EducationSection() {
   const { language } = useSitePreferences();
