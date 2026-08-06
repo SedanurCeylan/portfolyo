@@ -2,14 +2,16 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDownIcon, ArrowDownTrayIcon } from "@heroicons/react/24/outline";
+import { ArrowDownIcon, ArrowDownTrayIcon, EnvelopeIcon, FolderIcon } from "@heroicons/react/24/outline";
 import { useSitePreferences } from "@/context/SitePreferences";
 import { useSiteContent } from "@/context/SiteContent";
 
 const copy = {
-  tr: { eyebrow: "Bilgisayar mühendisi · Isparta", line1: "FİKİRLERİ", line2: "KODLA", line3: "ÜRÜNE", line4: "DÖNÜŞTÜRÜYORUM", available: "Yeni projelere açık", note: "Araştırma, veri ve ürün geliştirmeyi bir araya getiren dijital çözümler." },
-  en: { eyebrow: "Computer engineer · Isparta", line1: "TURNING", line2: "IDEAS", line3: "INTO", line4: "PRODUCTS", available: "Open to new projects", note: "Digital solutions bringing research, data and product development together." },
+  tr: { welcome: "Merhaba, ben", note: "Araştırma, veri ve ürün geliştirmeyi bir araya getiren dijital çözümler üretiyorum.", available: "Yeni projelere açık", finder: "Sedanur — Portfolyo", photo: "Fotoğraflar", projects: "Projeler", contact: "İletişim" },
+  en: { welcome: "Hi, I'm", note: "I create digital solutions bringing research, data and product development together.", available: "Open to new projects", finder: "Sedanur — Portfolio", photo: "Photos", projects: "Projects", contact: "Contact" },
 };
+
+function WindowDots() { return <div className="mac-window-dots" aria-hidden="true"><i /><i /><i /></div>; }
 
 export default function HeroSection() {
   const { language } = useSitePreferences();
@@ -18,31 +20,37 @@ export default function HeroSection() {
   const t = content[language].hero;
   const about = content[language].about;
   const c = copy[language];
-  const fields = t.fields.split("·").map((item) => item.trim()).filter(Boolean);
-  const reveal = { hidden: { opacity: 0, y: reduceMotion ? 0 : 22 }, visible: { opacity: 1, y: 0 } };
 
-  return <section id="anasayfa" className="creatie-hero" aria-labelledby="hero-title">
-    <div className="creatie-photo" aria-hidden="true"><Image src={about.image} alt="" fill priority className="object-cover" sizes="100vw" unoptimized={about.image.startsWith("/api/")} /></div>
-    <div className="creatie-wash" aria-hidden="true" />
-    <motion.div className="creatie-profile" initial={reduceMotion ? false : { opacity: 0, x: -18 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: .55 }}>
-      <div className="creatie-profile-head"><span className="creatie-avatar"><Image src={about.image} alt={`${t.firstName} ${t.lastName}`} fill className="object-cover" sizes="44px" unoptimized={about.image.startsWith("/api/")} /></span><i aria-hidden="true" />{c.available}</div>
-      <strong>{t.firstName} {t.lastName}</strong>
-      <p>{c.note}</p>
-      <small>{c.eyebrow}</small>
-    </motion.div>
+  return <section id="anasayfa" className="mac-hero" aria-labelledby="hero-title">
+    <div className="mac-wallpaper" aria-hidden="true"><i /><i /><i /></div>
+    <div className="mac-desktop-label" aria-hidden="true"><span>SC</span><small>PORTFOLIO<br />2026</small></div>
 
-    <motion.div className="creatie-title-wrap" initial="hidden" animate="visible" transition={{ staggerChildren: reduceMotion ? 0 : .07 }}>
-      <motion.p className="creatie-kicker" variants={reveal}>PORTFOLIO · 2026</motion.p>
-      <motion.h1 id="hero-title" variants={reveal}><span>{c.line1}</span><span>{c.line2}</span><span>{c.line3}</span><span>{c.line4}</span></motion.h1>
-    </motion.div>
+    <motion.article className="mac-main-window" initial={reduceMotion ? false : { opacity: 0, y: 24, scale: .98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: .58 }}>
+      <header className="mac-window-bar"><WindowDots /><span>{c.finder}</span><b>⌘</b></header>
+      <div className="mac-window-body">
+        <p className="mac-overline"><i aria-hidden="true" />{c.available}</p>
+        <p className="mac-welcome">{c.welcome}</p>
+        <h1 id="hero-title"><span>{t.firstName}</span><strong>{t.lastName}</strong></h1>
+        <p className="mac-role">{t.role}</p>
+        <p className="mac-note">{c.note}</p>
+        <p className="mac-fields">{t.fields}</p>
+        <div className="hero-actions"><a href="#projeler" className="button button-primary">{t.projects}<ArrowDownIcon aria-hidden="true" /></a><a href="/api/cv" target="_blank" rel="noreferrer" className="button button-secondary">{t.cv}<ArrowDownTrayIcon aria-hidden="true" /></a></div>
+      </div>
+    </motion.article>
 
-    <div className="creatie-stickers" aria-label={t.fields}>{fields.map((field, index) => <motion.span key={field} className={`creatie-sticker sticker-${index + 1}`} initial={reduceMotion ? false : { opacity: 0, scale: .8, rotate: 0 }} animate={{ opacity: 1, scale: 1, rotate: index === 0 ? -5 : index === 1 ? 4 : -2 }} transition={{ delay: .35 + index * .08 }}>{field}</motion.span>)}</div>
-    <div className="creatie-squiggle squiggle-one" aria-hidden="true">⌁⌁</div>
-    <div className="creatie-squiggle squiggle-two" aria-hidden="true">∿</div>
+    <motion.article className="mac-photo-window" initial={reduceMotion ? false : { opacity: 0, x: 24, rotate: 0 }} animate={{ opacity: 1, x: 0, rotate: 2 }} transition={{ duration: .55, delay: .16 }}>
+      <header className="mac-window-bar"><WindowDots /><span>{c.photo}</span></header>
+      <div className="mac-photo"><Image src={about.image} alt={`${t.firstName} ${t.lastName}`} fill priority className="object-cover" sizes="(max-width: 700px) 72vw, 310px" unoptimized={about.image.startsWith("/api/")} /></div>
+      <footer><span>{t.firstName} {t.lastName}</span><small>{about.location}</small></footer>
+    </motion.article>
 
-    <motion.div className="creatie-hero-bottom" initial={reduceMotion ? false : { opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .45 }}>
-      <p>— {t.role}<br />{t.fields}</p>
-      <div className="hero-actions"><a href="#projeler" className="button button-primary">{t.projects}<ArrowDownIcon aria-hidden="true" /></a><a href="/api/cv" target="_blank" rel="noreferrer" className="button button-secondary">{t.cv}<ArrowDownTrayIcon aria-hidden="true" /></a></div>
-    </motion.div>
+    <div className="mac-desktop-files" aria-hidden="true"><div><span>📁</span><small>projects</small></div><div><span>💾</span><small>skills.zip</small></div></div>
+
+    <motion.nav className="mac-dock" aria-label="Hero shortcuts" initial={reduceMotion ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .42 }}>
+      <a href="#projeler" aria-label={c.projects}><span className="dock-icon dock-folder"><FolderIcon /></span><small>{c.projects}</small></a>
+      <a href="/api/cv" target="_blank" rel="noreferrer" aria-label="CV"><span className="dock-icon dock-cv">CV</span><small>CV</small></a>
+      <a href="/iletisim" aria-label={c.contact}><span className="dock-icon dock-mail"><EnvelopeIcon /></span><small>{c.contact}</small></a>
+      <a href="https://github.com/SedanurCeylan" target="_blank" rel="noreferrer" aria-label="GitHub"><span className="dock-icon dock-github">GH</span><small>GitHub</small></a>
+    </motion.nav>
   </section>;
 }
