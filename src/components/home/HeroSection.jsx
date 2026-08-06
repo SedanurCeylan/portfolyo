@@ -1,56 +1,57 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDownIcon, ArrowDownTrayIcon, EnvelopeIcon, FolderIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { FolderIcon, EnvelopeIcon, Squares2X2Icon, UserIcon, LanguageIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useSitePreferences } from "@/context/SitePreferences";
 import { useSiteContent } from "@/context/SiteContent";
 
 const copy = {
-  tr: { welcome: "Merhaba, ben", note: "Araştırma, veri ve ürün geliştirmeyi bir araya getiren dijital çözümler üretiyorum.", available: "Yeni projelere açık", finder: "Sedanur — Portfolyo", photo: "Fotoğraflar", projects: "Projeler", contact: "İletişim" },
-  en: { welcome: "Hi, I'm", note: "I create digital solutions bringing research, data and product development together.", available: "Open to new projects", finder: "Sedanur — Portfolio", photo: "Photos", projects: "Projects", contact: "Contact" },
+  tr: { available: "Yeni projelere açık", slogan: ["FİKİRLERİ", "KODLA", "ÜRÜNE", "DÖNÜŞTÜR"], note: "Sadece kod değil; yaşayan dijital ürünler geliştiriyorum.", about: "Hakkımda", projects: "Projeler", experience: "Deneyim", contact: "İletişim", navigation: "Navigasyon", language: "English" },
+  en: { available: "Available for work", slogan: ["TURNING", "IDEAS", "INTO", "PRODUCTS"], note: "Not just code; I build digital products that feel alive.", about: "About", projects: "Projects", experience: "Experience", contact: "Contact", navigation: "Navigation", language: "Türkçe" },
 };
 
-function WindowDots() { return <div className="mac-window-dots" aria-hidden="true"><i /><i /><i /></div>; }
-
 export default function HeroSection() {
-  const { language } = useSitePreferences();
+  const [panelOpen, setPanelOpen] = useState(false);
+  const { language, toggleLanguage } = useSitePreferences();
   const { content } = useSiteContent();
   const reduceMotion = useReducedMotion();
   const t = content[language].hero;
   const about = content[language].about;
   const c = copy[language];
+  const fields = t.fields.split("·").map((item) => item.trim()).filter(Boolean);
 
-  return <section id="anasayfa" className="mac-hero" aria-labelledby="hero-title">
-    <div className="mac-wallpaper" aria-hidden="true"><i /><i /><i /></div>
-    <div className="mac-desktop-label" aria-hidden="true"><span>SC</span><small>PORTFOLIO<br />2026</small></div>
+  return <section id="anasayfa" className="creatie-showcase" aria-labelledby="hero-title">
+    <div className="showcase-wallpaper" aria-hidden="true" />
+    <div className="showcase-tint" aria-hidden="true" />
+    <motion.p className="showcase-creator" initial={reduceMotion ? false : { opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>SEDANUR CEYLAN</motion.p>
 
-    <motion.article className="mac-main-window" initial={reduceMotion ? false : { opacity: 0, y: 24, scale: .98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: .58 }}>
-      <header className="mac-window-bar"><WindowDots /><span>{c.finder}</span><b>⌘</b></header>
-      <div className="mac-window-body">
-        <p className="mac-overline"><i aria-hidden="true" />{c.available}</p>
-        <p className="mac-welcome">{c.welcome}</p>
-        <h1 id="hero-title"><span>{t.firstName}</span><strong>{t.lastName}</strong></h1>
-        <p className="mac-role">{t.role}</p>
-        <p className="mac-note">{c.note}</p>
-        <p className="mac-fields">{t.fields}</p>
-        <div className="hero-actions"><a href="#projeler" className="button button-primary">{t.projects}<ArrowDownIcon aria-hidden="true" /></a><a href="/api/cv" target="_blank" rel="noreferrer" className="button button-secondary">{t.cv}<ArrowDownTrayIcon aria-hidden="true" /></a></div>
-      </div>
-    </motion.article>
+    <motion.aside className="showcase-profile" initial={reduceMotion ? false : { opacity: 0, x: -18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: .1 }}>
+      <span className="showcase-avatar"><Image src={about.image} alt={`${t.firstName} ${t.lastName}`} fill className="object-cover" sizes="48px" unoptimized={about.image.startsWith("/api/")} /></span>
+      <div><small><i aria-hidden="true" />{c.available}</small><strong>{t.firstName} {t.lastName} — {t.role}</strong></div>
+    </motion.aside>
 
-    <motion.article className="mac-photo-window" initial={reduceMotion ? false : { opacity: 0, x: 24, rotate: 0 }} animate={{ opacity: 1, x: 0, rotate: 2 }} transition={{ duration: .55, delay: .16 }}>
-      <header className="mac-window-bar"><WindowDots /><span>{c.photo}</span></header>
-      <div className="mac-photo"><Image src={about.image} alt={`${t.firstName} ${t.lastName}`} fill priority className="object-cover" sizes="(max-width: 700px) 72vw, 310px" unoptimized={about.image.startsWith("/api/")} /></div>
-      <footer><span>{t.firstName} {t.lastName}</span><small>{about.location}</small></footer>
-    </motion.article>
+    <motion.div className="showcase-title" initial={reduceMotion ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65 }}>
+      <h1 id="hero-title">{c.slogan.map((line) => <span key={line}>{line}</span>)}</h1>
+    </motion.div>
 
-    <div className="mac-desktop-files" aria-hidden="true"><div><span>📁</span><small>projects</small></div><div><span>💾</span><small>skills.zip</small></div></div>
+    <div className="showcase-tags" aria-label={t.fields}>{fields.map((field, index) => <motion.span key={field} className={`showcase-tag tag-${index + 1}`} initial={reduceMotion ? false : { opacity: 0, scale: .8 }} animate={{ opacity: 1, scale: 1, rotate: index === 0 ? -5 : index === 1 ? 4 : -3 }} transition={{ delay: .3 + index * .08 }}><b>{index === 0 ? "⌘" : index === 1 ? "✦" : "◇"}</b>{field}</motion.span>)}</div>
+    <div className="showcase-eyes" aria-hidden="true"><i /><i /></div>
+    <p className="showcase-note">— {c.note}</p>
 
-    <motion.nav className="mac-dock" aria-label="Hero shortcuts" initial={reduceMotion ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .42 }}>
-      <a href="#projeler" aria-label={c.projects}><span className="dock-icon dock-folder"><FolderIcon /></span><small>{c.projects}</small></a>
-      <a href="/api/cv" target="_blank" rel="noreferrer" aria-label="CV"><span className="dock-icon dock-cv">CV</span><small>CV</small></a>
-      <a href="/iletisim" aria-label={c.contact}><span className="dock-icon dock-mail"><EnvelopeIcon /></span><small>{c.contact}</small></a>
-      <a href="https://github.com/SedanurCeylan" target="_blank" rel="noreferrer" aria-label="GitHub"><span className="dock-icon dock-github">GH</span><small>GitHub</small></a>
-    </motion.nav>
+    <AnimatePresence>{panelOpen && <motion.aside className="showcase-panel" initial={{ opacity: 0, y: 18, scale: .96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 14, scale: .97 }}>
+      <header><div><span>SC</span><p>{c.navigation}<small>{t.role}</small></p></div><button type="button" onClick={() => setPanelOpen(false)} aria-label="Kapat"><XMarkIcon /></button></header>
+      <nav><a href="#hakkimda" onClick={() => setPanelOpen(false)}><UserIcon />{c.about}<span>01</span></a><a href="#projeler" onClick={() => setPanelOpen(false)}><FolderIcon />{c.projects}<span>02</span></a><a href="#deneyim" onClick={() => setPanelOpen(false)}><Squares2X2Icon />{c.experience}<span>03</span></a><Link href="/iletisim"><EnvelopeIcon />{c.contact}<span>04</span></Link></nav>
+      <button className="showcase-language" type="button" onClick={toggleLanguage}><LanguageIcon />{c.language}</button>
+    </motion.aside>}</AnimatePresence>
+
+    <nav className="showcase-dock" aria-label={c.navigation}>
+      <button type="button" onClick={() => setPanelOpen((value) => !value)} aria-label={c.navigation} aria-expanded={panelOpen}><span className="showcase-dock-icon dock-menu"><Squares2X2Icon /></span></button>
+      <a href="#hakkimda" aria-label={c.about}><span className="showcase-dock-icon dock-about"><UserIcon /></span></a>
+      <a href="#projeler" aria-label={c.projects}><span className="showcase-dock-icon dock-projects"><FolderIcon /></span></a>
+      <Link href="/iletisim" aria-label={c.contact}><span className="showcase-dock-icon dock-contact"><EnvelopeIcon /></span></Link>
+    </nav>
   </section>;
 }
