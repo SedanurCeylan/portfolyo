@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { FolderIcon } from "@heroicons/react/24/outline";
 import { useSitePreferences } from "@/context/SitePreferences";
 import { useSiteContent } from "@/context/SiteContent";
 
@@ -21,7 +20,7 @@ export default function ProjectsSection() {
 
   return <section id="projeler" className="desktop-projects" aria-labelledby="projects-title">
     <div className="desktop-projects-wallpaper" aria-hidden="true" />
-    <header className="desktop-projects-title"><span><b><FolderIcon /></b>{t.label}</span><h2 id="projects-title">{t.title.map((line) => <strong key={line}>{line}</strong>)}</h2></header>
+    <header className="desktop-projects-title"><span><b className="mac-folder-symbol">📁</b>{t.label}</span><h2 id="projects-title">{t.title.map((line) => <strong key={line}>{line}</strong>)}</h2></header>
     <div className="desktop-project-grid">{projects.map((project, index) => {
       const href = project.externalUrl || `/projeler/${project.slug}`;
       return <motion.article key={`${project.slug}-${index}`} className={`desktop-project-card project-card-${index % 6}`} initial={reduceMotion ? false : { opacity: 0, y: 30, rotate: 0 }} whileInView={{ opacity: 1, y: 0, rotate: [-4, 1, 4, -2, 3, -3][index % 6] }} viewport={{ once: true, amount: .15 }} transition={{ delay: index * .06 }}>

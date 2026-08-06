@@ -141,3 +141,19 @@ body:has(.creatie-showcase) .site-nav { display: none; }
 @media (max-width: 980px) { .desktop-projects { min-height: auto; }.desktop-project-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }.desktop-project-card,.desktop-project-card:nth-child(4),.desktop-project-card:nth-child(5) { grid-column: auto; }.desktop-projects-title { margin-bottom: 80px; } }
 @media (max-width: 640px) { .desktop-projects { padding: 72px 18px 130px; }.desktop-projects-title { margin-bottom: 65px; }.desktop-projects-title h2 { font-size: clamp(48px,14vw,68px); }.desktop-project-grid { grid-template-columns: 1fr; gap: 58px; }.desktop-project-card { width: min(92%,420px); margin-inline: auto; }.desktop-project-card:nth-child(even) { transform: rotate(2deg); }.desktop-project-card footer { align-items: flex-start; flex-direction: column; gap: 8px; }.desktop-project-card footer > div { justify-content: flex-start; }.desktop-project-all { margin-top: 60px; } }
 @media (prefers-reduced-motion: reduce) { .desktop-project-card,.desktop-project-image img { transition: none; } }
+
+/* Apple-style application icon language */
+.showcase-dock-icon { overflow: hidden; font-family: "Apple Color Emoji","Segoe UI Emoji",sans-serif; font-size: 30px; line-height: 1; }
+.dock-finder { position: relative; background: linear-gradient(90deg,#62c8f8 0 50%,#188bdc 50%); }
+.dock-finder::before { content: ""; position: absolute; top: 10px; left: 25px; width: 2px; height: 18px; border-radius: 2px; background: #173d62; }
+.dock-finder::after { content: "••"; position: absolute; top: 6px; left: 11px; color: #173d62; font: 800 13px/1 sans-serif; letter-spacing: 14px; }
+.dock-finder b { position: relative; z-index: 2; margin-top: 17px; color: #173d62; font: 800 25px/1 sans-serif; transform: rotate(180deg); }
+.dock-photos { background: #fff; }
+.dock-files { background: linear-gradient(#7bd2ff,#2e91e3); }
+.dock-apple-mail { background: linear-gradient(#80caff,#2c91e7); }
+.mac-panel-app,.mac-nav-app,.mac-language-symbol,.mac-folder-symbol { font-family: "Apple Color Emoji","Segoe UI Emoji",sans-serif; font-style: normal; }
+.mac-panel-app { display: grid !important; place-items: center; font-size: 21px !important; }
+.mac-nav-app { font-size: 18px; }
+.mac-close-symbol { font-size: 20px; line-height: 1; }
+.mac-language-symbol { font-size: 16px; }
+.desktop-projects-title .mac-folder-symbol { font-size: 22px; }

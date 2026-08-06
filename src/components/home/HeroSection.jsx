@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { FolderIcon, EnvelopeIcon, Squares2X2Icon, UserIcon, LanguageIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useSitePreferences } from "@/context/SitePreferences";
 import { useSiteContent } from "@/context/SiteContent";
 
@@ -42,16 +41,16 @@ export default function HeroSection() {
     <p className="showcase-note">— {c.note}</p>
 
     <AnimatePresence>{panelOpen && <motion.aside className="showcase-panel" initial={{ opacity: 0, y: 18, scale: .96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 14, scale: .97 }}>
-      <header><div><span>SC</span><p>{c.navigation}<small>{t.role}</small></p></div><button type="button" onClick={() => setPanelOpen(false)} aria-label="Kapat"><XMarkIcon /></button></header>
-      <nav><a href="#hakkimda" onClick={() => setPanelOpen(false)}><UserIcon />{c.about}<span>01</span></a><a href="#projeler" onClick={() => setPanelOpen(false)}><FolderIcon />{c.projects}<span>02</span></a><a href="#deneyim" onClick={() => setPanelOpen(false)}><Squares2X2Icon />{c.experience}<span>03</span></a><Link href="/iletisim"><EnvelopeIcon />{c.contact}<span>04</span></Link></nav>
-      <button className="showcase-language" type="button" onClick={toggleLanguage}><LanguageIcon />{c.language}</button>
+      <header><div><span className="mac-panel-app">⚙️</span><p>{c.navigation}<small>{t.role}</small></p></div><button type="button" onClick={() => setPanelOpen(false)} aria-label="Kapat"><span className="mac-close-symbol">×</span></button></header>
+      <nav><a href="#hakkimda" onClick={() => setPanelOpen(false)}><i className="mac-nav-app">🌸</i>{c.about}<span>01</span></a><a href="#projeler" onClick={() => setPanelOpen(false)}><i className="mac-nav-app">📁</i>{c.projects}<span>02</span></a><a href="#deneyim" onClick={() => setPanelOpen(false)}><i className="mac-nav-app">🗓️</i>{c.experience}<span>03</span></a><Link href="/iletisim"><i className="mac-nav-app">✉️</i>{c.contact}<span>04</span></Link></nav>
+      <button className="showcase-language" type="button" onClick={toggleLanguage}><span className="mac-language-symbol">🌐</span>{c.language}</button>
     </motion.aside>}</AnimatePresence>
 
     <nav className="showcase-dock" aria-label={c.navigation}>
-      <button type="button" onClick={() => setPanelOpen((value) => !value)} aria-label={c.navigation} aria-expanded={panelOpen}><span className="showcase-dock-icon dock-menu"><Squares2X2Icon /></span></button>
-      <a href="#hakkimda" aria-label={c.about}><span className="showcase-dock-icon dock-about"><UserIcon /></span></a>
-      <a href="#projeler" aria-label={c.projects}><span className="showcase-dock-icon dock-projects"><FolderIcon /></span></a>
-      <Link href="/iletisim" aria-label={c.contact}><span className="showcase-dock-icon dock-contact"><EnvelopeIcon /></span></Link>
+      <button type="button" onClick={() => setPanelOpen((value) => !value)} aria-label={c.navigation} aria-expanded={panelOpen}><span className="showcase-dock-icon dock-finder"><b>⌣</b></span></button>
+      <a href="#hakkimda" aria-label={c.about}><span className="showcase-dock-icon dock-photos">🌸</span></a>
+      <a href="#projeler" aria-label={c.projects}><span className="showcase-dock-icon dock-files">📁</span></a>
+      <Link href="/iletisim" aria-label={c.contact}><span className="showcase-dock-icon dock-apple-mail">✉️</span></Link>
     </nav>
   </section>;
 }
