@@ -1,4 +1,5 @@
 import "./globals.css";
+import "./creatie.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { SitePreferencesProvider } from "@/context/SitePreferences";

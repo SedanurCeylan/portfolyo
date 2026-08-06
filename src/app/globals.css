@@ -520,6 +520,60 @@ input, textarea { background: color-mix(in srgb, var(--surface) 90%, transparent
   .hero-project-meta { align-items: flex-start; flex-direction: column; }
 }
 
+/* Creatie-inspired visual system */
+.creatie-hero { position: relative; isolation: isolate; min-height: 100svh; overflow: hidden; background: #7597b7; color: #fff; }
+.creatie-photo { position: absolute; z-index: -3; inset: 0; opacity: .76; }
+.creatie-photo img { object-position: center 32%; filter: saturate(.82) contrast(.92); }
+.creatie-wash { position: absolute; z-index: -2; inset: 0; background: linear-gradient(180deg,rgba(35,69,94,.18),rgba(44,67,56,.12)),linear-gradient(90deg,rgba(70,111,148,.48),transparent 45%,rgba(128,151,85,.22)); }
+.creatie-profile { position: absolute; z-index: 3; top: 17%; left: max(5vw,32px); width: min(290px,28vw); padding: 16px; border: 1px solid rgba(255,255,255,.42); border-radius: 18px; background: rgba(150,185,211,.28); box-shadow: 0 18px 50px rgba(20,36,48,.12); backdrop-filter: blur(14px); }
+.creatie-profile-head { display: flex; align-items: center; gap: 7px; font-size: 9px; }
+.creatie-profile-head i { width: 7px; height: 7px; border-radius: 50%; background: #80ec68; box-shadow: 0 0 0 4px rgba(128,236,104,.14); }
+.creatie-avatar { position: relative; width: 42px; height: 42px; margin-right: 3px; overflow: hidden; border: 2px solid rgba(255,255,255,.7); border-radius: 50%; }
+.creatie-profile strong { display: block; margin-top: 14px; font-size: 15px; font-weight: 750; text-transform: uppercase; }
+.creatie-profile p { margin: 7px 0; color: rgba(255,255,255,.88); font-size: 11px; line-height: 1.45; }
+.creatie-profile small { color: rgba(255,255,255,.65); font-size: 9px; }
+.creatie-title-wrap { position: absolute; z-index: 2; top: 50%; left: 50%; width: min(760px,72vw); transform: translate(-50%,-51%); }
+.creatie-kicker { margin: 0 0 16px; color: rgba(255,255,255,.78); font: 700 10px/1 monospace; letter-spacing: .16em; text-align: center; }
+.creatie-title-wrap h1 { margin: 0; color: #fff; font-size: clamp(62px,7.7vw,124px); font-weight: 850; line-height: .78; letter-spacing: -.065em; text-align: center; text-transform: uppercase; }
+.creatie-title-wrap h1 span { display: block; }
+.creatie-sticker { position: absolute; z-index: 4; padding: 10px 17px; border: 1px solid rgba(19,24,37,.15); border-radius: 10px; color: #171b25; box-shadow: 0 8px 22px rgba(20,28,40,.16); font-size: 13px; font-weight: 750; }
+.sticker-1 { top: 31%; right: 23%; background: #8fd8ff; }
+.sticker-2 { top: 48%; left: 27%; background: #e3b6ff; }
+.sticker-3 { top: 58%; right: 28%; background: #ff90c5; }
+.creatie-squiggle { position: absolute; z-index: 2; color: #f3ff3b; font-family: cursive; font-weight: 800; line-height: 1; }
+.squiggle-one { top: 21%; right: 13%; font-size: 64px; transform: rotate(28deg); }
+.squiggle-two { right: 7%; bottom: 20%; font-size: 110px; transform: rotate(-24deg); }
+.creatie-hero-bottom { position: absolute; z-index: 4; right: max(4vw,28px); bottom: 30px; left: max(4vw,28px); display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; }
+.creatie-hero-bottom > p { margin: 0; color: rgba(255,255,255,.95); font-size: 14px; line-height: 1.45; }
+.creatie-hero .hero-actions { margin: 0; }
+.creatie-hero .button { min-height: 46px; border-radius: 12px; }
+.creatie-hero .button-primary { border-color: #fff; background: #fff; color: #101521; }
+.creatie-hero .button-secondary { border-color: rgba(255,255,255,.55); background: rgba(255,255,255,.15); color: #fff; backdrop-filter: blur(12px); }
+.creatie-hero .button:hover { transform: translateY(-3px); }
+.site-nav { border-bottom-color: rgba(255,255,255,.16); background: rgba(13,20,31,.78); color: #fff; }
+.site-nav .brand > span { background: #fff; color: #101521; }
+.site-nav .brand small,.site-nav .nav-links a { color: rgba(255,255,255,.68); }
+.site-nav .utility-button { border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.1); color: #fff; }
+.site-nav .nav-cta { background: #f3ff3b; color: #151a22; }
+.scroll-progress { background: #f3ff3b; }
+.skill-map-section { background: #f1ff5a; }
+.skill-map-card { border-color: rgba(18,25,35,.16); border-radius: 24px; box-shadow: none; }
+.skill-map-card:nth-child(2) { background: #d9bdff; }
+.skill-map-card:nth-child(3) { background: #9ddcff; }
+.skill-map-card:nth-child(4) { background: #ffafd1; }
+.case-section { background: #11151d; color: #fff; }
+.case-section .mini-label,.case-copy > span,.case-copy > small { color: #9ca8b8; }
+.case-row { border-color: #303746; }
+.case-image { border-radius: 24px; }
+.case-copy h3,.case-copy h3 a { color: #fff; }
+.case-all { color: #f3ff3b; }
+.about-section { background: #f3f0ea; }
+.about-copy h2 { text-transform: uppercase; }
+.education-section { background: #a9dfff; }
+@media (max-width: 900px) { .creatie-profile { top: 13%; width: 250px; } .creatie-title-wrap { width: 86vw; } .creatie-title-wrap h1 { font-size: clamp(58px,11vw,92px); } .sticker-1 { right: 8%; } .sticker-2 { left: 8%; } .sticker-3 { right: 12%; } }
+@media (max-width: 600px) { .creatie-hero { min-height: 900px; } .creatie-photo { opacity: .58; } .creatie-profile { top: 100px; left: 18px; width: calc(100% - 36px); } .creatie-title-wrap { top: 49%; width: calc(100% - 24px); } .creatie-title-wrap h1 { font-size: clamp(48px,15vw,72px); line-height: .84; } .creatie-kicker { margin-bottom: 12px; } .creatie-sticker { padding: 8px 11px; font-size: 10px; } .sticker-1 { top: 38%; right: 3%; } .sticker-2 { top: 57%; left: 2%; } .sticker-3 { top: 65%; right: 4%; } .creatie-squiggle { display: none; } .creatie-hero-bottom { right: 18px; bottom: 24px; left: 18px; align-items: stretch; flex-direction: column; } .creatie-hero-bottom .hero-actions { display: grid; grid-template-columns: 1fr 1fr; } .creatie-hero-bottom .button { justify-content: center; width: 100%; } .site-nav .brand p { display: none; } }
+@media (prefers-reduced-motion: reduce) { .creatie-hero .button,.skill-map-card { transition: none; } }
+
 /* About stays text-only; the portrait is reserved for the hero. */
 .about-simple { display: block; }
 .about-copy { max-width: 760px; margin-inline: auto; }

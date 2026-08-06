@@ -1,0 +1,81 @@
+/* Final visual theme — intentionally loaded after the legacy stylesheet. */
+:root {
+  --play-lime: #f0ff4a;
+  --play-blue: #9edcff;
+  --play-purple: #d8b8ff;
+  --play-pink: #ffabd0;
+  --play-dark: #11151d;
+  --play-cream: #f3f0e9;
+}
+
+.site-nav {
+  border-bottom-color: rgba(255,255,255,.16);
+  background: rgba(13,20,31,.78);
+  color: #fff;
+}
+.site-nav .brand > span { background: #fff; color: var(--play-dark); }
+.site-nav .brand small,
+.site-nav .nav-links a { color: rgba(255,255,255,.7); }
+.site-nav .nav-links a:hover { color: #fff; }
+.site-nav .utility-button { border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.1); color: #fff; }
+.site-nav .nav-cta { background: var(--play-lime); color: var(--play-dark); }
+.site-nav .menu-button { border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.1); color: #fff; }
+.site-nav .mobile-menu { border-color: rgba(255,255,255,.14); background: rgba(17,21,29,.98); color: #fff; }
+.scroll-progress { background: var(--play-lime); }
+
+.skill-map-section { border: 0; background: var(--play-lime); color: var(--play-dark); }
+.skill-map-title .mini-label,
+.skill-map-title div > p { color: rgba(17,21,29,.62); }
+.skill-map-grid { gap: 16px; }
+.skill-map-card { border: 1px solid rgba(17,21,29,.16); border-radius: 24px; background: #fff; box-shadow: 0 10px 0 rgba(17,21,29,.08); }
+.skill-map-card:nth-child(2) { background: var(--play-purple); }
+.skill-map-card:nth-child(3) { background: var(--play-blue); }
+.skill-map-card:nth-child(4) { background: var(--play-pink); }
+.skill-map-head { border-color: rgba(17,21,29,.15); }
+.skill-map-head svg { color: var(--play-dark); }
+.skill-tag { border-color: rgba(17,21,29,.18); background: rgba(255,255,255,.52); color: var(--play-dark); }
+
+.about-section { background: var(--play-cream); color: var(--play-dark); }
+.about-copy h2 { color: var(--play-dark); text-transform: uppercase; }
+.about-copy > p:not(.mini-label) { color: #5f6671; }
+.about-copy li { border-color: rgba(17,21,29,.16); background: #fff; color: var(--play-dark); }
+
+.case-section { border: 0; background: var(--play-dark); color: #fff; }
+.case-head h2,
+.case-copy h3,
+.case-copy h3 a { color: #fff; }
+.case-section .mini-label,
+.case-copy > span,
+.case-copy > small { color: #9ca8b8; }
+.case-row { border-color: #303746; }
+.case-image { overflow: hidden; border-radius: 24px; background: #222936; }
+.case-copy > p { color: var(--play-lime); }
+.case-copy > div a { color: #fff; }
+.case-copy h3 a:hover,
+.case-row:hover .case-copy h3 { color: var(--play-blue); }
+.case-all { color: var(--play-lime); }
+
+.experience-section { color: var(--ink); }
+.timeline-row { border-color: var(--line); }
+.timeline-row time { color: #5c36d6; }
+.timeline-item.is-open { border-radius: 22px; background: color-mix(in srgb,var(--play-purple) 35%,transparent); }
+
+.education-section { background: var(--play-blue); color: var(--play-dark); }
+.education-section .mini-label,
+.education-list h3 span,
+.education-list p { color: rgba(17,21,29,.6); }
+.education-list { border-color: var(--play-dark); }
+
+.site-footer { background: #0b0e13; }
+.site-footer .footer-mail { background: var(--play-lime); }
+
+@media (max-width: 720px) {
+  .skill-map-card { border-radius: 20px; }
+  .case-image { border-radius: 18px; }
+  .case-row { border-color: #303746; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-map-card,
+  .case-image img { transition: none; }
+}
