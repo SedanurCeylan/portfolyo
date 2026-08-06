@@ -642,6 +642,15 @@ input, textarea { background: color-mix(in srgb, var(--surface) 90%, transparent
 }
 
 /* Current hero spacing and simple pinned portrait */
+body .network-hero {
+  background-color: #f5f7fa;
+  background-image:
+    linear-gradient(rgba(47,91,234,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47,91,234,.055) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: center top;
+}
+body .network-hero > .hero-grid { display: none; }
 body .network-hero-layout { grid-template-columns: minmax(0,52fr) minmax(340px,48fr); width: min(1240px,calc(100% - 96px)); gap: clamp(48px,6vw,88px); }
 .network-hero-copy { max-width: 650px; }
 .hero-photo-simple { width: 100%; min-height: 500px; }
