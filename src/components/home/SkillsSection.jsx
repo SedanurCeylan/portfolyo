@@ -1,20 +1,33 @@
 "use client";
+
 import { motion, useReducedMotion } from "framer-motion";
-import { CodeBracketIcon, CircleStackIcon, CpuChipIcon, WrenchScrewdriverIcon } from "@heroicons/react/24/outline";
 import { useSitePreferences } from "@/context/SitePreferences";
 import { useSiteContent } from "@/context/SiteContent";
-const icons = { frontend: CodeBracketIcon, backend: CircleStackIcon, data: CpuChipIcon, tools: WrenchScrewdriverIcon };
-const aliases = { React: ["Next.js"], JavaScript: ["Next.js"], CSS: ["Next.js"], "REST API": ["API"], SQL: ["EF Core"], Git: [], GitHub: [] };
 
-function SkillTag({ skill, projects }) {
-  const matches = projects.filter((project) => [skill, ...(aliases[skill] ?? [])].some((term) => project.technologies.some((technology) => technology.toLowerCase() === term.toLowerCase())));
-  return <li className="skill-tag" tabIndex="0"><span>{skill}</span>{matches.length > 0 && <small>{matches.map((project) => project.title).join(" · ")}</small>}</li>;
-}
-function SkillCategory({ category, projects, index, reduceMotion }) {
-  const Icon = icons[category.key];
-  return <motion.article className="skill-map-card" initial={reduceMotion ? false : { opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .25 }} transition={{ delay: reduceMotion ? 0 : index * .05 }}><div className="skill-map-head"><Icon aria-hidden="true" /><h3>{category.title}</h3></div><ul>{category.skills.map((skill) => <SkillTag key={skill} skill={skill} projects={projects} />)}</ul></motion.article>;
-}
+const copy = {
+  tr: { title: ["FİKİRLERİ ÜRÜNE", "DÖNÜŞTÜREN BECERİLER"], description: "Web uygulamaları, veri ve yapay zekâ çözümleri geliştirirken kullandığım teknoloji seti." },
+  en: { title: ["SKILLS THAT TURN", "IDEAS INTO PRODUCTS"], description: "The technology stack I use to build web applications, data and artificial intelligence solutions." },
+};
+const icons = { frontend: "🖥️", backend: "🗄️", data: "🧠", tools: "🛠️" };
+
 export default function SkillsSection() {
-  const { language } = useSitePreferences(); const { content } = useSiteContent(); const reduceMotion = useReducedMotion(); const t = content[language].skills; const projects = content[language].projects.filter((project) => project.visible !== false);
-  return <section id="beceriler" className="skill-map-section" aria-labelledby="skills-title"><div className="section-wrap skill-map-wrap"><header className="skill-map-title"><p className="mini-label">02 / {t.label}</p><div><h2 id="skills-title">{t.label}</h2><p>{t.subtitle}</p></div></header><div className="skill-map-grid">{t.categories.map((category, index) => <SkillCategory key={category.key} category={category} projects={projects} index={index} reduceMotion={reduceMotion} />)}</div></div></section>;
+  const { language } = useSitePreferences();
+  const { content } = useSiteContent();
+  const reduceMotion = useReducedMotion();
+  const t = content[language].skills;
+  const c = copy[language];
+
+  return <section id="beceriler" className="paper-skills" aria-labelledby="skills-title">
+    <div className="paper-skills-decor decor-dot" aria-hidden="true" />
+    <div className="paper-skills-decor decor-eyes" aria-hidden="true"><i /><i /></div>
+    <div className="paper-skills-decor decor-scribble" aria-hidden="true">∿∿</div>
+    <header className="paper-skills-header"><span><b>🧰</b>{t.label}</span><h2 id="skills-title">{c.title.map((line) => <strong key={line}>{line}</strong>)}</h2><p>{c.description}</p></header>
+    <div className="paper-skill-cards">{t.categories.map((category, index) => <motion.article key={category.key} className={`paper-skill-card paper-card-${index + 1}`} initial={reduceMotion ? false : { opacity: 0, y: 28, rotate: 0 }} whileInView={{ opacity: 1, y: 0, rotate: [-2, 2, -4, 1][index] }} viewport={{ once: true, amount: .2 }} transition={{ delay: index * .07 }}>
+      <i className="paper-pin" aria-hidden="true" />
+      <i className="paper-fold" aria-hidden="true" />
+      <div className="paper-card-number"><span>{String(index + 1).padStart(2,"0")}</span><b>{icons[category.key] || "💻"}</b></div>
+      <h3>{category.title}</h3>
+      <ul>{category.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul>
+    </motion.article>)}</div>
+  </section>;
 }
