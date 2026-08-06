@@ -82,8 +82,9 @@
 
 /* macOS-inspired hero */
 .mac-hero { position: relative; min-height: 100svh; overflow: hidden; padding: 126px max(5vw,28px) 130px; background: #badcf3; color: #172033; }
-.mac-wallpaper { position: absolute; inset: 0; overflow: hidden; background: linear-gradient(145deg,#dff4ff 0%,#a8d8f5 40%,#a8a7ed 100%); }
-.mac-wallpaper::before { content: ""; position: absolute; inset: -25%; background: radial-gradient(ellipse at 25% 55%,rgba(255,255,255,.9),transparent 32%),radial-gradient(ellipse at 68% 30%,rgba(255,190,224,.62),transparent 28%),radial-gradient(ellipse at 75% 78%,rgba(104,114,225,.62),transparent 31%); filter: blur(18px); transform: rotate(-8deg); }
+.mac-wallpaper { position: absolute; inset: 0; overflow: hidden; background: #7bb8df url("/mac-wallpaper.png") center center / cover no-repeat; }
+.mac-wallpaper::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg,rgba(28,92,146,.1),rgba(17,39,25,.12)); }
+.mac-wallpaper i { display: none; }
 .mac-wallpaper i { position: absolute; width: 42vw; height: 14vw; border: 2px solid rgba(255,255,255,.34); border-radius: 50%; transform: rotate(-28deg); }
 .mac-wallpaper i:nth-child(1) { top: 12%; right: -8%; }.mac-wallpaper i:nth-child(2) { right: 3%; bottom: 8%; }.mac-wallpaper i:nth-child(3) { bottom: 10%; left: -14%; }
 .mac-desktop-label { position: absolute; z-index: 1; top: 106px; left: max(3vw,22px); display: flex; align-items: center; gap: 10px; color: rgba(23,32,51,.6); }
