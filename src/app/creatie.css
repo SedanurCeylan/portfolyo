@@ -332,6 +332,14 @@ body:has(.admin-page) .site-nav,body:has(.admin-page) .mac-footer,body:has(.admi
 .admin-page input,.admin-page textarea,.admin-login input { color: #172033 !important; -webkit-text-fill-color: #172033 !important; caret-color: #2d66d5; opacity: 1; color-scheme: light; }
 .admin-page input::placeholder,.admin-page textarea::placeholder,.admin-login input::placeholder { color: #8a959e !important; -webkit-text-fill-color: #8a959e !important; opacity: 1; }
 .admin-page input:-webkit-autofill,.admin-login input:-webkit-autofill { -webkit-text-fill-color: #172033 !important; box-shadow: 0 0 0 1000px rgba(255,255,255,.96) inset !important; }
+
+/* Rounded macOS typography */
+:root { --site-font: ui-rounded,"SF Pro Rounded","Arial Rounded MT Bold","Segoe UI",sans-serif; }
+body,button,input,textarea,select { font-family: var(--site-font); }
+.showcase-title h1,.desktop-projects-title h2,.paper-skills-header h2,.paper-experience-header h2,.desktop-about-header h2,.mac-education-header h2,.footer-hero h2,.detail-intro h1,.detail-gallery-section h2,.success-card h1,.admin-header h1,.admin-login h1 { font-family: var(--site-font); font-weight: 760; letter-spacing: -.02em; }
+.showcase-title h1 { font-weight: 800; letter-spacing: -.025em; }.desktop-projects-title h2,.paper-skills-header h2,.paper-experience-header h2,.desktop-about-header h2,.mac-education-header h2 { letter-spacing: -.018em; }.footer-hero h2 { letter-spacing: -.025em; }
+.showcase-profile strong,.desktop-project-card h3,.paper-skill-card h3,.paper-job button strong,.about-notes-layout > article > p,.education-window h3,.detail-story h2 { letter-spacing: -.01em; }
+p,.project-text,.about-notes-layout blockquote,.detail-story p { letter-spacing: .005em; }
 @media (max-width: 760px) { .showcase-profile div > p { display: none; } }
 
 /* Profile opens vertically without clipping its copy */
