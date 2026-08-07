@@ -208,20 +208,23 @@ body:has(.creatie-showcase) .site-nav { display: none; }
 
 /* Compact desktop project wall */
 @media (min-width: 981px) {
-  .desktop-projects { min-height: 100svh; padding: 38px 5vw 76px; }
-  .desktop-projects-title { margin-bottom: 55px; }
-  .desktop-projects-title h2 { font-size: clamp(44px,4.6vw,68px); }
-  .desktop-projects-title > span { padding: 8px 15px; font-size: 12px; }
-  .desktop-project-grid { width: min(1260px,100%); gap: 42px 30px; }
-  .desktop-project-card { padding: 8px 8px 10px; border-radius: 15px; }
-  .desktop-project-image { aspect-ratio: 16/8.7; }
-  .desktop-browser-bar { height: 16px; }
+  .desktop-projects { min-height: 100svh; padding: 24px 5vw 42px; }
+  .desktop-projects-title { margin-bottom: 30px; }
+  .desktop-projects-title h2 { font-size: clamp(38px,3.8vw,56px); }
+  .desktop-projects-title > span { padding: 6px 13px; font-size: 10px; }
+  .desktop-projects-title > span b { width: 30px; height: 30px; margin: -20px 0 -7px -24px; }
+  .desktop-project-grid { width: min(1120px,100%); gap: 28px 24px; }
+  .desktop-project-card { padding: 7px 7px 8px; border-radius: 13px; }
+  .desktop-project-image { aspect-ratio: 16/7.2; }
+  .desktop-browser-bar { height: 13px; }
   .desktop-browser-bar span { width: 6px; height: 6px; }
-  .desktop-project-copy { gap: 6px; padding-top: 9px; }
-  .desktop-project-card h3 { font-size: clamp(17px,1.45vw,22px); }
-  .desktop-project-copy > span { min-height: 2.6em; font-size: 8px; line-height: 1.3; }
-  .desktop-project-copy footer { padding-top: 6px; }
-  .desktop-project-copy footer small { padding: 3px 6px; font-size: 6px; }
-  .desktop-project-all { margin-top: 45px; padding: 10px 15px; font-size: 10px; }
-  .project-paperclip { top: -18px; height: 38px; border-width: 3px; }
+  .desktop-project-copy { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; padding: 7px 2px 0; }
+  .desktop-project-copy > div > p { font-size: 6px; }
+  .desktop-project-card h3 { font-size: clamp(15px,1.25vw,19px); }
+  .desktop-project-copy > span { display: none; }
+  .desktop-project-copy footer { flex: none; padding: 0; border: 0; }
+  .desktop-project-copy footer > div { display: none; }
+  .desktop-project-copy footer > a { padding: 6px 8px; border-radius: 7px; background: #172033; color: #fff; font-size: 7px; }
+  .desktop-project-all { margin-top: 28px; padding: 8px 13px; font-size: 9px; }
+  .project-paperclip { top: -15px; width: 14px; height: 31px; border-width: 3px; }
 }
