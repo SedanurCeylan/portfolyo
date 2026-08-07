@@ -7,8 +7,8 @@ import { useSitePreferences } from "@/context/SitePreferences";
 import { useSiteContent } from "@/context/SiteContent";
 
 const copy = {
-  tr: { available: "Yeni projelere açık", slogan: ["FİKİRLERİ", "KODLA", "ÜRÜNE", "DÖNÜŞTÜR"], note: "Sadece kod değil; yaşayan dijital ürünler geliştiriyorum.", about: "Hakkımda", projects: "Projeler", experience: "Deneyim", contact: "İletişim", navigation: "Navigasyon", language: "English", viewCv: "CV'yi görüntüle", downloadCv: "İndir" },
-  en: { available: "Available for work", slogan: ["TURNING", "IDEAS", "INTO", "PRODUCTS"], note: "Not just code; I build digital products that feel alive.", about: "About", projects: "Projects", experience: "Experience", contact: "Contact", navigation: "Navigation", language: "Türkçe", viewCv: "View résumé", downloadCv: "Download" },
+  tr: { available: "Yeni projelere açık", slogan: ["FİKİRLERİ", "KODLA", "ÜRÜNE", "DÖNÜŞTÜR"], note: "Sadece kod değil; yaşayan dijital ürünler geliştiriyorum.", about: "Hakkımda", projects: "Projeler", experience: "Deneyim", contact: "İletişim", navigation: "Navigasyon", language: "English", viewCv: "CV'yi görüntüle", downloadCv: "İndir", socials: "Bağlantılar" },
+  en: { available: "Available for work", slogan: ["TURNING", "IDEAS", "INTO", "PRODUCTS"], note: "Not just code; I build digital products that feel alive.", about: "About", projects: "Projects", experience: "Experience", contact: "Contact", navigation: "Navigation", language: "Türkçe", viewCv: "View résumé", downloadCv: "Download", socials: "Social links" },
 };
 
 export default function HeroSection() {
@@ -18,6 +18,7 @@ export default function HeroSection() {
   const reduceMotion = useReducedMotion();
   const t = content[language].hero;
   const about = content[language].about;
+  const social = content[language].footer;
   const c = copy[language];
   const fields = t.fields.split("·").map((item) => item.trim()).filter(Boolean);
 
@@ -39,6 +40,7 @@ export default function HeroSection() {
     <div className="showcase-tags" aria-label={t.fields}>{fields.map((field, index) => <motion.span key={field} className={`showcase-tag tag-${index + 1}`} initial={reduceMotion ? false : { opacity: 0, scale: .8 }} animate={{ opacity: 1, scale: 1, rotate: index === 0 ? -5 : index === 1 ? 4 : -3 }} transition={{ delay: .3 + index * .08 }}><b>{index === 0 ? "⌘" : index === 1 ? "✦" : "◇"}</b>{field}</motion.span>)}</div>
     <div className="showcase-eyes" aria-hidden="true"><i /><i /></div>
     <p className="showcase-note">— {c.note}</p>
+    <motion.aside className="hero-social-widget" initial={reduceMotion ? false : { opacity: 0, x: 14 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: .35 }} aria-label={c.socials}><small>{c.socials.toUpperCase()}</small><div><a href={social.github} target="_blank" rel="noreferrer" aria-label="GitHub"><span className="social-app-github">⌘</span><b>GitHub</b></a><a href={social.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><span className="social-app-linkedin">in</span><b>LinkedIn</b></a></div></motion.aside>
 
     <AnimatePresence>{panelOpen && <motion.aside className="showcase-panel" initial={{ opacity: 0, y: 18, scale: .96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 14, scale: .97 }}>
       <header><div><span className="mac-panel-app">⚙️</span><p>{c.navigation}<small>{t.role}</small></p></div><button type="button" onClick={() => setPanelOpen(false)} aria-label="Kapat"><span className="mac-close-symbol">×</span></button></header>
