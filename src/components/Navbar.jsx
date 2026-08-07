@@ -18,7 +18,7 @@ export default function Navbar() {
   const pathname=usePathname();
   const { theme, language, toggleTheme, toggleLanguage } = useSitePreferences();
   const t=copy[language];
-  const links=[{label:t.about,href:"/#hakkimda",section:"hakkimda"},{label:t.projects,href:"/#projeler",section:"projeler"},{label:t.experience,href:"/#deneyim",section:"deneyim"},{label:t.contact,href:"/iletisim",path:"/iletisim"}];
+  const links=[{label:t.about,href:"/#hakkimda",section:"hakkimda"},{label:t.projects,href:"/#projeler",section:"projeler"},{label:t.experience,href:"/#deneyim",section:"deneyim"},{label:t.contact,href:"/#iletisim",section:"iletisim"}];
   useEffect(()=>{const update=()=>{const max=document.documentElement.scrollHeight-window.innerHeight;setProgress(max>0?window.scrollY/max:0)};update();window.addEventListener("scroll",update,{passive:true});return()=>window.removeEventListener("scroll",update)},[]);
   useEffect(()=>{if(pathname!=="/"){setActiveSection("");return;}const sections=["hakkimda","projeler","deneyim"].map(id=>document.getElementById(id)).filter(Boolean);const observer=new IntersectionObserver(entries=>{const visible=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(visible)setActiveSection(visible.target.id)},{rootMargin:"-25% 0px -55%",threshold:[0,.2,.5]});sections.forEach(section=>observer.observe(section));return()=>observer.disconnect()},[pathname]);
   return <header className="site-nav"><div className="section-wrap nav-inner">

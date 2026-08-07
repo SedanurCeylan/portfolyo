@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useSitePreferences } from "@/context/SitePreferences";
 import { useSiteContent } from "@/context/SiteContent";
@@ -42,7 +41,7 @@ export default function HeroSection() {
 
     <AnimatePresence>{panelOpen && <motion.aside className="showcase-panel" initial={{ opacity: 0, y: 18, scale: .96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 14, scale: .97 }}>
       <header><div><span className="mac-panel-app">⚙️</span><p>{c.navigation}<small>{t.role}</small></p></div><button type="button" onClick={() => setPanelOpen(false)} aria-label="Kapat"><span className="mac-close-symbol">×</span></button></header>
-      <nav><a href="#hakkimda" onClick={() => setPanelOpen(false)}><i className="mac-nav-app">🌸</i>{c.about}<span>01</span></a><a href="#projeler" onClick={() => setPanelOpen(false)}><i className="mac-nav-app">📁</i>{c.projects}<span>02</span></a><a href="#deneyim" onClick={() => setPanelOpen(false)}><i className="mac-nav-app">🗓️</i>{c.experience}<span>03</span></a><Link href="/iletisim"><i className="mac-nav-app">✉️</i>{c.contact}<span>04</span></Link></nav>
+      <nav><a href="#hakkimda" onClick={() => setPanelOpen(false)}><i className="mac-nav-app">🌸</i>{c.about}<span>01</span></a><a href="#projeler" onClick={() => setPanelOpen(false)}><i className="mac-nav-app">📁</i>{c.projects}<span>02</span></a><a href="#deneyim" onClick={() => setPanelOpen(false)}><i className="mac-nav-app">🗓️</i>{c.experience}<span>03</span></a><a href="#iletisim" onClick={() => setPanelOpen(false)}><i className="mac-nav-app">✉️</i>{c.contact}<span>04</span></a></nav>
       <button className="showcase-language" type="button" onClick={toggleLanguage}><span className="mac-language-symbol">🌐</span>{c.language}</button>
     </motion.aside>}</AnimatePresence>
 
@@ -50,7 +49,7 @@ export default function HeroSection() {
       <button type="button" onClick={() => setPanelOpen((value) => !value)} aria-label={c.navigation} aria-expanded={panelOpen}><small className="dock-tooltip">{c.navigation}</small><span className="showcase-dock-icon dock-finder"><b>⌣</b></span></button>
       <a href="#hakkimda" aria-label={c.about}><small className="dock-tooltip">{c.about}</small><span className="showcase-dock-icon dock-photos">🌸</span></a>
       <a href="#projeler" aria-label={c.projects}><small className="dock-tooltip">{c.projects}</small><span className="showcase-dock-icon dock-files">📁</span></a>
-      <Link href="/iletisim" aria-label={c.contact}><small className="dock-tooltip">{c.contact}</small><span className="showcase-dock-icon dock-apple-mail">✉️</span></Link>
+      <a href="#iletisim" aria-label={c.contact}><small className="dock-tooltip">{c.contact}</small><span className="showcase-dock-icon dock-apple-mail">✉️</span></a>
     </nav>
   </section>;
 }
