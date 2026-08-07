@@ -144,6 +144,25 @@ body:has(.creatie-showcase) .site-nav { display: none; }
     inset: auto !important;
   }
 }
+
+/* Stable macOS application symbols (independent from platform emoji sets) */
+.showcase-dock-icon:has(.mac-app-symbol) { overflow: visible; background: transparent; box-shadow: none; }
+.mac-app-symbol { position: relative; display: block; width: 100%; height: 100%; overflow: hidden; border-radius: 22%; box-shadow: inset 0 1px rgba(255,255,255,.72),0 6px 12px rgba(28,43,58,.24); }
+.mac-symbol-finder { background: linear-gradient(90deg,#72cafa 0 50%,#def4ff 50%); }
+.mac-symbol-finder::before,.mac-symbol-finder::after { content: ""; position: absolute; top: 30%; width: 7%; height: 7%; border-radius: 50%; background: #173d62; }
+.mac-symbol-finder::before { left: 27%; }.mac-symbol-finder::after { right: 27%; }
+.mac-symbol-finder > i { position: absolute; top: 12%; bottom: 13%; left: 50%; width: 2px; background: #173d62; transform: translateX(-50%); }
+.mac-symbol-finder > b { position: absolute; right: 18%; bottom: 23%; left: 18%; height: 24%; border-bottom: 2px solid #173d62; border-radius: 0 0 50% 50%; }
+.mac-symbol-photos { background: #fff; }
+.mac-symbol-photos > i { position: absolute; top: 14%; left: 39%; width: 22%; height: 37%; border-radius: 60% 60% 45% 45%; background: #f14c55; transform-origin: 50% 98%; }
+.mac-symbol-photos > i:nth-child(2) { background:#f28a35; transform:rotate(45deg) }.mac-symbol-photos > i:nth-child(3) { background:#f3d13e; transform:rotate(90deg) }.mac-symbol-photos > i:nth-child(4) { background:#60bd61; transform:rotate(135deg) }.mac-symbol-photos > i:nth-child(5) { background:#42bfc4; transform:rotate(180deg) }.mac-symbol-photos > i:nth-child(6) { background:#438be0; transform:rotate(225deg) }.mac-symbol-photos > i:nth-child(7) { background:#8a63d2; transform:rotate(270deg) }.mac-symbol-photos > i:nth-child(8) { background:#d85da5; transform:rotate(315deg) }
+.mac-symbol-photos > b { position: absolute; top: 42%; left: 42%; width: 16%; height: 16%; border-radius: 50%; background: #fff; }
+.mac-symbol-folder { background: linear-gradient(#79d0ff,#2e94e6); }
+.mac-symbol-folder::before { content:""; position:absolute; top:22%; left:14%; width:34%; height:15%; border-radius:5px 5px 0 0; background:#d8f4ff; }.mac-symbol-folder > i { position:absolute; inset:31% 12% 16%; border:2px solid rgba(255,255,255,.85); border-radius:4px; background:rgba(220,245,255,.42); }
+.mac-symbol-phone { display:grid; place-items:center; background:linear-gradient(#66dc79,#24a947); color:#fff; font:700 58%/1 Arial,sans-serif; }
+.mac-symbol-calendar { display:grid; grid-template-rows:34% 66%; background:#fff; color:#151922; text-align:center; }.mac-symbol-calendar b { display:grid; place-items:center; background:#f05a5f; color:#fff; font:800 19%/1 Arial,sans-serif; }.mac-symbol-calendar strong { display:grid; place-items:center; font:700 39%/1 Arial,sans-serif; }
+.mac-symbol-mail { background:linear-gradient(#75c6fb,#2386df); }.mac-symbol-mail > i { position:absolute; inset:24% 15%; border:2px solid #fff; border-radius:4px; }.mac-symbol-mail > i::after { content:""; position:absolute; top:-2px; left:10%; width:70%; height:55%; border-right:2px solid #fff; border-bottom:2px solid #fff; transform:rotate(45deg); }
+.mac-panel-app .mac-app-symbol { width:30px; height:30px; }.mac-nav-app .mac-app-symbol { width:26px; height:26px; border-radius:7px; }.mac-nav-app { display:grid; place-items:center; }
 @media (prefers-reduced-motion: reduce) { .showcase-dock-icon { transition: none; } }
 
 /* Desktop project gallery */

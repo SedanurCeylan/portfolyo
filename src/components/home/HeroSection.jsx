@@ -19,6 +19,15 @@ const tagPosition = (index) => {
   return index % 2 === 0 ? { top: `${top}%`, left: `${edge}%` } : { top: `${top}%`, right: `${edge}%` };
 };
 
+function MacAppIcon({ app }) {
+  if (app === "photos") return <span className="mac-app-symbol mac-symbol-photos" aria-hidden="true">{Array.from({ length: 8 }, (_, index) => <i key={index} />)}<b /></span>;
+  if (app === "folder") return <span className="mac-app-symbol mac-symbol-folder" aria-hidden="true"><i /></span>;
+  if (app === "phone") return <span className="mac-app-symbol mac-symbol-phone" aria-hidden="true">☎︎</span>;
+  if (app === "calendar") return <span className="mac-app-symbol mac-symbol-calendar" aria-hidden="true"><b>AĞU</b><strong>07</strong></span>;
+  if (app === "mail") return <span className="mac-app-symbol mac-symbol-mail" aria-hidden="true"><i /></span>;
+  return <span className="mac-app-symbol mac-symbol-finder" aria-hidden="true"><i /><b /></span>;
+}
+
 export default function HeroSection() {
   const [panelOpen, setPanelOpen] = useState(false);
   const { language, toggleLanguage } = useSitePreferences();
@@ -50,16 +59,16 @@ export default function HeroSection() {
     <p className="showcase-note">— {c.note}</p>
 
     <AnimatePresence>{panelOpen && <motion.aside className="showcase-panel" initial={{ opacity: 0, y: 18, scale: .96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 14, scale: .97 }}>
-      <header><div><span className="mac-panel-app">⚙️</span><p>{c.navigation}<small>{t.role}</small></p></div><button type="button" onClick={() => setPanelOpen(false)} aria-label="Kapat"><span className="mac-close-symbol">×</span></button></header>
-      <nav><a href="#hakkimda" onClick={() => setPanelOpen(false)}><i className="mac-nav-app">🌸</i>{c.about}<span>01</span></a><a href="#projeler" onClick={() => setPanelOpen(false)}><i className="mac-nav-app">📁</i>{c.projects}<span>02</span></a><a href="#deneyim" onClick={() => setPanelOpen(false)}><i className="mac-nav-app">🗓️</i>{c.experience}<span>03</span></a><a href="#iletisim" onClick={() => setPanelOpen(false)}><i className="mac-nav-app">✉️</i>{c.contact}<span>04</span></a></nav>
+      <header><div><span className="mac-panel-app"><MacAppIcon app="finder" /></span><p>{c.navigation}<small>{t.role}</small></p></div><button type="button" onClick={() => setPanelOpen(false)} aria-label="Kapat"><span className="mac-close-symbol">×</span></button></header>
+      <nav><a href="#hakkimda" onClick={() => setPanelOpen(false)}><i className="mac-nav-app"><MacAppIcon app="photos" /></i>{c.about}<span>01</span></a><a href="#projeler" onClick={() => setPanelOpen(false)}><i className="mac-nav-app"><MacAppIcon app="folder" /></i>{c.projects}<span>02</span></a><a href="#deneyim" onClick={() => setPanelOpen(false)}><i className="mac-nav-app"><MacAppIcon app="calendar" /></i>{c.experience}<span>03</span></a><a href="#iletisim" onClick={() => setPanelOpen(false)}><i className="mac-nav-app"><MacAppIcon app="mail" /></i>{c.contact}<span>04</span></a></nav>
       <button className="showcase-language" type="button" onClick={toggleLanguage}><span className="mac-language-symbol">🌐</span>{c.language}</button>
     </motion.aside>}</AnimatePresence>
 
     <nav className="showcase-dock" aria-label={c.navigation}>
-      <button type="button" onClick={() => setPanelOpen((value) => !value)} aria-label={c.navigation} aria-expanded={panelOpen}><small className="dock-tooltip">{c.navigation}</small><span className="showcase-dock-icon dock-finder"><b>⌣</b></span></button>
-      <a href="#hakkimda" aria-label={c.about}><small className="dock-tooltip">{c.about}</small><span className="showcase-dock-icon dock-photos">🌸</span></a>
-      <a href="#projeler" aria-label={c.projects}><small className="dock-tooltip">{c.projects}</small><span className="showcase-dock-icon dock-files">📁</span></a>
-      <div className="dock-contact-item"><a href="#iletisim" aria-label={c.contact}><small className="dock-tooltip">{c.contact}</small><span className="showcase-dock-icon dock-apple-phone">☎</span></a><aside className="dock-contact-popover"><small>{language === "tr" ? "BANA ULAŞIN" : "CONTACT ME"}</small><a href={social.instagram || "https://instagram.com"} target="_blank" rel="noreferrer"><span className="contact-instagram">◎</span>Instagram<b>↗</b></a><a href={social.linkedin} target="_blank" rel="noreferrer"><span className="contact-linkedin">in</span>LinkedIn<b>↗</b></a></aside></div>
+      <button type="button" onClick={() => setPanelOpen((value) => !value)} aria-label={c.navigation} aria-expanded={panelOpen}><small className="dock-tooltip">{c.navigation}</small><span className="showcase-dock-icon"><MacAppIcon app="finder" /></span></button>
+      <a href="#hakkimda" aria-label={c.about}><small className="dock-tooltip">{c.about}</small><span className="showcase-dock-icon"><MacAppIcon app="photos" /></span></a>
+      <a href="#projeler" aria-label={c.projects}><small className="dock-tooltip">{c.projects}</small><span className="showcase-dock-icon"><MacAppIcon app="folder" /></span></a>
+      <div className="dock-contact-item"><a href="#iletisim" aria-label={c.contact}><small className="dock-tooltip">{c.contact}</small><span className="showcase-dock-icon"><MacAppIcon app="phone" /></span></a><aside className="dock-contact-popover"><small>{language === "tr" ? "BANA ULAŞIN" : "CONTACT ME"}</small><a href={social.instagram || "https://instagram.com"} target="_blank" rel="noreferrer"><span className="contact-instagram">◎</span>Instagram<b>↗</b></a><a href={social.linkedin} target="_blank" rel="noreferrer"><span className="contact-linkedin">in</span>LinkedIn<b>↗</b></a></aside></div>
     </nav>
   </section>;
 }
