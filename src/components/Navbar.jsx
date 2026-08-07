@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Bars3Icon, XMarkIcon, MoonIcon, SunIcon, LanguageIcon } from "@heroicons/react/24/outline";
 import { useSitePreferences } from "@/context/SitePreferences";
 import { usePathname } from "next/navigation";
 
@@ -25,10 +24,10 @@ export default function Navbar() {
     <Link href="/" className="brand" aria-label={t.home}><span>SC</span><p>Sedanur Ceylan<small>{t.role}</small></p></Link>
     <nav className="nav-links" aria-label={t.menu}>{links.map(l=><Link key={l.href} href={l.href} aria-current={l.path===pathname?"page":l.section===activeSection?"location":undefined}>{l.label}</Link>)}</nav>
     <div className="nav-actions">
-      <button className="utility-button language-button" onClick={toggleLanguage} aria-label={t.lang}><LanguageIcon/><b>{language === "tr" ? "EN" : "TR"}</b></button>
-      <button className="utility-button" onClick={toggleTheme} aria-label={theme === "dark" ? t.light : t.dark}>{theme === "dark" ? <SunIcon/> : <MoonIcon/>}</button>
-      <a href="mailto:sdnrcyln2@gmail.com" className="nav-cta">{t.work} <span>↗</span></a>
+      <button className="utility-button language-button" onClick={toggleLanguage} aria-label={t.lang}><span>🌐</span><b>{language === "tr" ? "EN" : "TR"}</b></button>
+      <button className="utility-button" onClick={toggleTheme} aria-label={theme === "dark" ? t.light : t.dark}><span>{theme === "dark" ? "☀️" : "🌙"}</span></button>
+      <Link href="/#iletisim" className="nav-cta"><span>✉️</span>{t.work}</Link>
     </div>
-    <button className="menu-button" onClick={()=>setOpen(!open)} aria-label={t.menu} aria-expanded={open}>{open?<XMarkIcon/>:<Bars3Icon/>}</button>
-  </div>{open&&<div className="mobile-menu">{links.map(l=><Link key={l.href} href={l.href} onClick={()=>setOpen(false)}>{l.label}</Link>)}<a href="/cv.pdf">{t.cv}</a></div>}<div className="scroll-progress" style={{transform:`scaleX(${progress})`}}/></header>;
+    <button className="menu-button" onClick={()=>setOpen(!open)} aria-label={t.menu} aria-expanded={open}><span>{open?"×":"≡"}</span></button>
+  </div>{open&&<div className="mobile-menu">{links.map((l,index)=><Link key={l.href} href={l.href} onClick={()=>setOpen(false)}><span>{["🌸","📁","🗓️","✉️"][index]}</span>{l.label}</Link>)}<a href="/api/cv" target="_blank"><span>📄</span>{t.cv}</a></div>}<div className="scroll-progress" style={{transform:`scaleX(${progress})`}}/></header>;
 }
