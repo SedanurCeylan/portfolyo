@@ -268,3 +268,13 @@ body:has(.creatie-showcase) .site-nav { display: none; }
   .showcase-profile:hover div > p { max-height: 48px; margin-top: 10px; opacity: 1; transform: translateY(0); }
 }
 @media (max-width: 760px) { .showcase-profile div > p { display: none; } }
+
+/* Profile opens vertically without clipping its copy */
+.showcase-profile { min-height: 84px; transition: min-height .3s ease,padding .3s ease,background-color .3s ease,box-shadow .3s ease; }
+@media (hover: hover) and (min-width: 761px) {
+  .showcase-profile:hover { align-items: flex-start; width: min(430px,36vw); min-height: 165px; padding: 20px; }
+  .showcase-profile:hover .showcase-avatar { flex-basis: 62px; width: 62px; height: 62px; }
+  .showcase-profile:hover div { padding-top: 2px; }
+  .showcase-profile:hover strong { overflow: visible; white-space: normal; font-size: clamp(12px,1.05vw,15px); line-height: 1.25; }
+  .showcase-profile:hover div > p { max-width: 300px; max-height: 72px; margin-top: 12px; line-height: 1.55; }
+}
