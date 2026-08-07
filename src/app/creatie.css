@@ -276,6 +276,11 @@ body:has(.creatie-showcase) .site-nav { display: none; }
 @media (max-width: 760px) { .hero-cv-file { top: 165px; right: 17px; width: 90px; transform: scale(.86); transform-origin: top right; }.hero-cv-file strong { max-width: 92px; } }
 .hero-cv-file { transform-origin: top right; }
 @media (max-width: 760px) { .hero-cv-file { scale: .86; } }
+
+/* Do not truncate the role before the profile card opens */
+.showcase-profile strong { display: block; overflow: visible; white-space: normal; font-size: clamp(11px,1.05vw,15px); line-height: 1.25; }
+.showcase-profile { min-height: 92px; }
+@media (max-width: 760px) { .showcase-profile strong { font-size: 11px; }.showcase-profile { min-height: 70px; } }
 @media (max-width: 760px) { .showcase-profile div > p { display: none; } }
 
 /* Profile opens vertically without clipping its copy */
