@@ -257,3 +257,14 @@ body:has(.creatie-showcase) .site-nav { display: none; }
 .dock-tooltip::after { content: ""; position: absolute; top: 100%; left: 50%; width: 7px; height: 7px; transform: translate(-50%,-4px) rotate(45deg); background: rgba(35,40,48,.88); }
 .showcase-dock a:hover .dock-tooltip,.showcase-dock button:hover .dock-tooltip,.showcase-dock a:focus-visible .dock-tooltip,.showcase-dock button:focus-visible .dock-tooltip { visibility: visible; opacity: 1; transform: translate(-50%,0) scale(1); }
 @media (hover: none) { .dock-tooltip { display: none; } }
+
+/* Expandable hero profile card */
+.showcase-profile { transform-origin: top left; transition: width .3s ease,padding .3s ease,background-color .3s ease,box-shadow .3s ease; }
+.showcase-avatar { transition: width .3s ease,height .3s ease,flex-basis .3s ease,transform .3s ease; }
+.showcase-profile div > p { overflow: hidden; max-width: 285px; max-height: 0; margin: 0; color: rgba(255,255,255,.86); font-size: 10px; line-height: 1.45; opacity: 0; transform: translateY(-5px); transition: max-height .3s ease,margin-top .3s ease,opacity .22s ease,transform .3s ease; }
+@media (hover: hover) and (min-width: 761px) {
+  .showcase-profile:hover { width: min(510px,44vw); padding: 21px 23px; background: rgba(77,126,155,.58); box-shadow: 0 22px 48px rgba(24,48,42,.22),inset 0 1px rgba(255,255,255,.25); }
+  .showcase-profile:hover .showcase-avatar { flex-basis: 67px; width: 67px; height: 67px; transform: rotate(-2deg); }
+  .showcase-profile:hover div > p { max-height: 48px; margin-top: 10px; opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 760px) { .showcase-profile div > p { display: none; } }

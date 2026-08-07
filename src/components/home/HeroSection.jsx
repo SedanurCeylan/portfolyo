@@ -28,8 +28,8 @@ export default function HeroSection() {
     <motion.p className="showcase-creator" initial={reduceMotion ? false : { opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>SEDANUR CEYLAN</motion.p>
 
     <motion.aside className="showcase-profile" initial={reduceMotion ? false : { opacity: 0, x: -18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: .1 }}>
-      <span className="showcase-avatar"><Image src={about.image} alt={`${t.firstName} ${t.lastName}`} fill className="object-cover" sizes="48px" unoptimized={about.image.startsWith("/api/")} /></span>
-      <div><small><i aria-hidden="true" />{c.available}</small><strong>{t.firstName} {t.lastName} — {t.role}</strong></div>
+      <span className="showcase-avatar"><Image src={about.image} alt={`${t.firstName} ${t.lastName}`} fill className="object-cover" sizes="67px" unoptimized={about.image.startsWith("/api/")} /></span>
+      <div><small><i aria-hidden="true" />{c.available}</small><strong>{t.firstName} {t.lastName} — {t.role}</strong><p>{c.note}</p></div>
     </motion.aside>
 
     <motion.div className="showcase-title" initial={reduceMotion ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65 }}>
