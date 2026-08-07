@@ -126,6 +126,24 @@ body:has(.creatie-showcase) .site-nav { display: none; }
 .showcase-dock { position: fixed; z-index: 60; bottom: 22px; left: 50%; display: flex; gap: 8px; padding: 10px; transform: translateX(-50%); border: 1px solid rgba(255,255,255,.68); border-radius: 22px; background: rgba(237,245,250,.43); box-shadow: 0 18px 36px rgba(20,36,42,.24); backdrop-filter: blur(20px); }.showcase-dock a,.showcase-dock button { display: block; padding: 0; border: 0; background: transparent; cursor: pointer; }.showcase-dock-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 14px; color: #fff; box-shadow: inset 0 1px rgba(255,255,255,.55),0 6px 12px rgba(28,43,58,.2); transition: transform .18s; }.showcase-dock-icon svg { width: 27px; }.showcase-dock a:hover .showcase-dock-icon,.showcase-dock button:hover .showcase-dock-icon { transform: translateY(-7px) scale(1.06); }.dock-menu { background: linear-gradient(#8e96a1,#3f4957); }.dock-about { background: linear-gradient(#ffbd4a,#ef7e25); }.dock-projects { background: linear-gradient(#5fc7ff,#247edd); }.dock-contact { background: linear-gradient(#72a9ff,#3765df); }
 .showcase-panel { position: fixed; z-index: 59; right: max(22px,calc(50% - 310px)); bottom: 94px; width: min(360px,calc(100% - 28px)); padding: 13px; border: 1px solid rgba(255,255,255,.65); border-radius: 24px; background: rgba(238,245,249,.72); color: #1c2534; box-shadow: 0 26px 70px rgba(20,35,50,.28); backdrop-filter: blur(26px); }.showcase-panel header { display: flex; align-items: center; justify-content: space-between; padding: 5px 5px 13px; }.showcase-panel header > div { display: flex; align-items: center; gap: 10px; }.showcase-panel header > div > span { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: #1d2635; color: #fff; font-size: 12px; font-weight: 800; }.showcase-panel header p { margin: 0; font-size: 12px; font-weight: 700; }.showcase-panel header p small { display: block; margin-top: 3px; color: #707b8c; font-size: 9px; font-weight: 500; }.showcase-panel header button { display: grid; place-items: center; width: 30px; height: 30px; border: 0; border-radius: 50%; background: rgba(29,38,53,.08); cursor: pointer; }.showcase-panel header button svg { width: 15px; }.showcase-panel nav { display: grid; gap: 5px; }.showcase-panel nav a { display: grid; grid-template-columns: 22px 1fr auto; align-items: center; gap: 9px; padding: 12px; border-radius: 13px; background: rgba(255,255,255,.55); font-size: 12px; font-weight: 650; }.showcase-panel nav a:hover { background: #fff; }.showcase-panel nav svg { width: 18px; color: #5865d8; }.showcase-panel nav span { color: #8a93a2; font: 9px monospace; }.showcase-language { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 8px; padding: 11px; border: 0; border-radius: 12px; background: #1d2635; color: #fff; font-size: 11px; cursor: pointer; }.showcase-language svg { width: 17px; }
 @media (max-width: 760px) { .creatie-showcase { min-height: 880px; }.showcase-creator { top: 18px; font-size: 15px; }.showcase-profile { top: 72px; left: 14px; width: calc(100% - 28px); padding: 12px 14px; }.showcase-avatar { flex-basis: 42px; width: 42px; height: 42px; }.showcase-title { top: 48%; width: calc(100% - 20px); }.showcase-title h1 { font-size: clamp(52px,15vw,78px); line-height: .82; }.showcase-tag { padding: 8px 11px; font-size: 10px; }.showcase-tag b { width: 25px; height: 25px; margin: -17px 0 -5px -17px; }.showcase-tags .tag-1 { top: 33%; right: 4%; }.showcase-tags .tag-2 { top: 57%; right: 5%; }.showcase-tags .tag-3 { top: 61%; left: 6%; }.showcase-eyes { top: 68%; right: 9%; transform: scale(.8); }.showcase-note { bottom: 110px; left: 18px; max-width: 240px; font-size: 15px; }.showcase-dock { bottom: 10px; }.showcase-dock-icon { width: 45px; height: 45px; }.showcase-panel { right: 14px; bottom: 78px; } }
+
+@media (max-width: 760px) {
+  .showcase-tags {
+    position: absolute;
+    z-index: 4;
+    top: 31%;
+    left: 22px;
+    right: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 16px;
+  }
+  .showcase-tags .showcase-tag {
+    position: relative;
+    inset: auto !important;
+  }
+}
 @media (prefers-reduced-motion: reduce) { .showcase-dock-icon { transition: none; } }
 
 /* Desktop project gallery */

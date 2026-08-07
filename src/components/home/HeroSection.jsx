@@ -11,6 +11,14 @@ const copy = {
   en: { available: "Available for work", slogan: ["TURNING", "IDEAS", "INTO", "PRODUCTS"], note: "Not just code; I build digital products that feel alive.", about: "About", projects: "Projects", experience: "Experience", contact: "Contact", navigation: "Navigation", language: "Türkçe", viewCv: "View résumé", downloadCv: "Download", socials: "Social links" },
 };
 
+const tagPosition = (index) => {
+  const presets = [{ top: "31%", right: "25%" }, { top: "45%", right: "31%" }, { top: "51%", left: "30%" }];
+  if (presets[index]) return presets[index];
+  const top = 20 + ((index * 19) % 57);
+  const edge = 4 + ((index * 13) % 18);
+  return index % 2 === 0 ? { top: `${top}%`, left: `${edge}%` } : { top: `${top}%`, right: `${edge}%` };
+};
+
 export default function HeroSection() {
   const [panelOpen, setPanelOpen] = useState(false);
   const { language, toggleLanguage } = useSitePreferences();
@@ -20,7 +28,7 @@ export default function HeroSection() {
   const about = content[language].about;
   const social = content[language].footer;
   const c = copy[language];
-  const fields = t.fields.split("·").map((item) => item.trim()).filter(Boolean);
+  const fields = (t.fields || "").split(/[·,;\n]+/).map((item) => item.trim()).filter(Boolean);
 
   return <section id="anasayfa" className="creatie-showcase" aria-labelledby="hero-title">
     <div className="showcase-wallpaper" aria-hidden="true" />
@@ -37,7 +45,7 @@ export default function HeroSection() {
       <h1 id="hero-title">{c.slogan.map((line) => <span key={line}>{line}</span>)}</h1>
     </motion.div>
 
-    <div className="showcase-tags" aria-label={t.fields}>{fields.map((field, index) => <motion.span key={field} className={`showcase-tag tag-${index + 1}`} initial={reduceMotion ? false : { opacity: 0, scale: .8 }} animate={{ opacity: 1, scale: 1, rotate: index === 0 ? -5 : index === 1 ? 4 : -3 }} transition={{ delay: .3 + index * .08 }}><b>{index === 0 ? "⌘" : index === 1 ? "✦" : "◇"}</b>{field}</motion.span>)}</div>
+    <div className="showcase-tags" aria-label={t.fields}>{fields.map((field, index) => <motion.span key={`${field}-${index}`} className={`showcase-tag tag-${index % 3 + 1}`} style={tagPosition(index)} initial={reduceMotion ? false : { opacity: 0, scale: .8 }} animate={{ opacity: 1, scale: 1, rotate: [-5,4,-3,3][index % 4] }} transition={{ delay: .3 + Math.min(index,8) * .06 }}><b>{["⌘","✦","◇"][index % 3]}</b>{field}</motion.span>)}</div>
     <div className="showcase-eyes" aria-hidden="true"><i /><i /></div>
     <p className="showcase-note">— {c.note}</p>
 
