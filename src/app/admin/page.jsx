@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeftIcon, CheckCircleIcon, ArrowPathIcon, ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/outline";
 import { useSiteContent } from "@/context/SiteContent";
 
 export default function AdminPage() {
@@ -43,7 +42,7 @@ export default function AdminPage() {
   const t = draft[language];
 
   return <main className="admin-page"><div className="admin-shell">
-    <header className="admin-header"><div><p>PORTFOLYO YÖNETİMİ</p><h1>İçerik paneli</h1></div><div className="admin-header-actions"><Link href="/"><ArrowLeftIcon /> Siteye dön</Link><button type="button" onClick={logout}><ArrowRightStartOnRectangleIcon /> Çıkış</button></div></header>
+    <div className="admin-window-bar"><div><i/><i/><i/></div><span>Portfolyo Yönetimi — Sedanur Ceylan</span><small>⚙️</small></div><header className="admin-header"><div><p>PORTFOLYO YÖNETİMİ</p><h1>İçerik paneli</h1></div><div className="admin-header-actions"><Link href="/"><span>⌂</span> Siteye dön</Link><button type="button" onClick={logout}><span>↪</span> Çıkış</button></div></header>
     <div className="admin-notice">Değişiklikler Firebase Firestore veritabanına kaydedilir ve yayınlanan sitedeki tüm ziyaretçilere yansır.</div>
     <div className="admin-language" role="group" aria-label="Düzenleme dili"><button type="button" className={language === "tr" ? "active" : ""} onClick={() => setLanguage("tr")}>Türkçe</button><button type="button" className={language === "en" ? "active" : ""} onClick={() => setLanguage("en")}>English</button></div>
     <form onSubmit={handleSave} className="admin-form">
@@ -57,7 +56,7 @@ export default function AdminPage() {
       <section className="admin-card"><div className="admin-card-title"><span>06</span><div><h2>Eğitim</h2></div></div><div className="admin-fields"><label>Bölüm başlığı<input value={t.education.title} onChange={(e)=>updateSection("education","title",e.target.value)}/></label></div><div className="admin-project-list">{t.education.items.map((item,index)=><fieldset key={index} className="admin-project"><legend>{item.school}</legend><div className="admin-fields"><label>Tarih<input value={item.period} onChange={(e)=>updateItem("education",index,"period",e.target.value)}/></label><label>Program<input value={item.degree} onChange={(e)=>updateItem("education",index,"degree",e.target.value)}/></label><label>Tür<input value={item.type} onChange={(e)=>updateItem("education",index,"type",e.target.value)}/></label><label>Okul<input value={item.school} onChange={(e)=>updateItem("education",index,"school",e.target.value)}/></label></div></fieldset>)}</div></section>
       <section className="admin-card"><div className="admin-card-title"><span>07</span><div><h2>Footer ve bağlantılar</h2></div></div><div className="admin-fields"><label>Birinci satır<input value={t.footer.line1} onChange={(e)=>updateSection("footer","line1",e.target.value)}/></label><label>İkinci satır<input value={t.footer.line2} onChange={(e)=>updateSection("footer","line2",e.target.value)}/></label><label>E-posta<input value={t.footer.email} onChange={(e)=>updateSection("footer","email",e.target.value)}/></label><label>GitHub<input value={t.footer.github} onChange={(e)=>updateSection("footer","github",e.target.value)}/></label><label>Instagram<input value={t.footer.instagram || ""} onChange={(e)=>updateSection("footer","instagram",e.target.value)} placeholder="https://instagram.com/..."/></label><label>LinkedIn<input value={t.footer.linkedin} onChange={(e)=>updateSection("footer","linkedin",e.target.value)}/></label></div></section>
       <section className="admin-card"><div className="admin-card-title"><span>08</span><div><h2>CV</h2><p>Yeni PDF yüklediğinde sitedeki CV butonu otomatik güncellenir.</p></div></div><label className="admin-upload">PDF dosyası seç<input type="file" accept="application/pdf" onChange={uploadCv} /><span>{cvStatus || "En fazla 8 MB · PDF"}</span></label></section>
-      {error && <div className="admin-error" role="alert">{error}</div>}<div className="admin-actions"><button type="button" className="admin-reset" onClick={handleReset}><ArrowPathIcon /> Varsayılana dön</button><button type="submit" className="admin-save">{saved ? <><CheckCircleIcon /> Kaydedildi</> : "Değişiklikleri kaydet"}</button></div>
+      {error && <div className="admin-error" role="alert">{error}</div>}<div className="admin-actions"><button type="button" className="admin-reset" onClick={handleReset}><span>↻</span> Varsayılana dön</button><button type="submit" className="admin-save">{saved ? <><span>✓</span> Kaydedildi</> : "Değişiklikleri kaydet"}</button></div>
     </form>
   </div></main>;
 }
