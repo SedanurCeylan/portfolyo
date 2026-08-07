@@ -25,6 +25,7 @@ function MacAppIcon({ app }) {
   if (app === "phone") return <span className="mac-app-symbol mac-symbol-phone" aria-hidden="true">☎︎</span>;
   if (app === "calendar") return <span className="mac-app-symbol mac-symbol-calendar" aria-hidden="true"><b>AĞU</b><strong>07</strong></span>;
   if (app === "mail") return <span className="mac-app-symbol mac-symbol-mail" aria-hidden="true"><i /></span>;
+  if (app === "pdf") return <span className="mac-app-symbol mac-symbol-pdf" aria-hidden="true"><i>PDF</i></span>;
   return <span className="mac-app-symbol mac-symbol-finder" aria-hidden="true"><i /><b /></span>;
 }
 
@@ -68,6 +69,7 @@ export default function HeroSection() {
       <button type="button" onClick={() => setPanelOpen((value) => !value)} aria-label={c.navigation} aria-expanded={panelOpen}><small className="dock-tooltip">{c.navigation}</small><span className="showcase-dock-icon"><MacAppIcon app="finder" /></span></button>
       <a href="#hakkimda" aria-label={c.about}><small className="dock-tooltip">{c.about}</small><span className="showcase-dock-icon"><MacAppIcon app="photos" /></span></a>
       <a href="#projeler" aria-label={c.projects}><small className="dock-tooltip">{c.projects}</small><span className="showcase-dock-icon"><MacAppIcon app="folder" /></span></a>
+      <a href="/api/cv" target="_blank" rel="noreferrer" aria-label={c.viewCv}><small className="dock-tooltip">{c.viewCv}</small><span className="showcase-dock-icon"><MacAppIcon app="pdf" /></span></a>
       <div className="dock-contact-item"><a href="#iletisim" aria-label={c.contact}><small className="dock-tooltip">{c.contact}</small><span className="showcase-dock-icon"><MacAppIcon app="phone" /></span></a><aside className="dock-contact-popover"><small>{language === "tr" ? "BANA ULAŞIN" : "CONTACT ME"}</small><a href={social.instagram || "https://instagram.com"} target="_blank" rel="noreferrer"><span className="contact-instagram">◎</span>Instagram<b>↗</b></a><a href={social.linkedin} target="_blank" rel="noreferrer"><span className="contact-linkedin">in</span>LinkedIn<b>↗</b></a></aside></div>
     </nav>
   </section>;
