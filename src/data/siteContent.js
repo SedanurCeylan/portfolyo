@@ -11,7 +11,7 @@ export const defaultSiteContent = {
       { period: "2023", company: "İnterProbe Bilgi Teknolojileri", role: "Stajyer Mühendis", text: "Siber Operasyonlar Merkezi'nde OSINT tabanlı tehdit verisi toplama ve değerlendirme.", tags: ["OSINT", "Threat Intelligence", "SOC"] },
     ] },
     education: { label: "04 / Eğitim", title: "Akademik altyapı.", items: [{ period: "2026 — Şimdi", degree: "Bilgisayar Mühendisliği", type: "Tezli Yüksek Lisans", school: "Isparta Uygulamalı Bilimler Üniversitesi" }, { period: "2020 — 2024", degree: "Bilgisayar Mühendisliği", type: "Lisans · GNO 3.10", school: "Süleyman Demirel Üniversitesi" }] },
-    footer: { label: "Bir sonraki projede", line1: "Birlikte değer", line2: "üretelim.", mailLabel: "E-posta gönder", email: "sdnrcyln2@gmail.com", github: "https://github.com/SedanurCeylan", linkedin: "https://www.linkedin.com/in/sedanur-ceylan-190702/", top: "Başa dön" },
+    footer: { label: "Bir sonraki projede", line1: "Birlikte değer", line2: "üretelim.", mailLabel: "E-posta gönder", email: "sdnrcyln2@gmail.com", github: "https://github.com/SedanurCeylan", instagram: "", linkedin: "https://www.linkedin.com/in/sedanur-ceylan-190702/", top: "Başa dön" },
     skills: { label: "Beceriler", subtitle: "Üretirken kullandığım teknolojiler.", categories: [
       { key: "frontend", title: "Frontend", skills: ["React", "Next.js", "JavaScript", "CSS"] },
       { key: "backend", title: "Backend", skills: ["ASP.NET", "Firebase", "REST API", "SQL"] },
@@ -29,7 +29,7 @@ export const defaultSiteContent = {
       { period: "2023", company: "InterProbe Information Technologies", role: "Engineering Intern", text: "OSINT-based threat data collection and assessment within the Security Operations Center.", tags: ["OSINT", "Threat Intelligence", "SOC"] },
     ] },
     education: { label: "04 / Education", title: "Academic foundation.", items: [{ period: "2026 — Present", degree: "Computer Engineering", type: "M.Sc. · Thesis", school: "Isparta University of Applied Sciences" }, { period: "2020 — 2024", degree: "Computer Engineering", type: "B.Sc. · GPA 3.10", school: "Süleyman Demirel University" }] },
-    footer: { label: "For the next project", line1: "Let's create", line2: "value together.", mailLabel: "Send an email", email: "sdnrcyln2@gmail.com", github: "https://github.com/SedanurCeylan", linkedin: "https://www.linkedin.com/in/sedanur-ceylan-190702/", top: "Back to top" },
+    footer: { label: "For the next project", line1: "Let's create", line2: "value together.", mailLabel: "Send an email", email: "sdnrcyln2@gmail.com", github: "https://github.com/SedanurCeylan", instagram: "", linkedin: "https://www.linkedin.com/in/sedanur-ceylan-190702/", top: "Back to top" },
     skills: { label: "Skills", subtitle: "Technologies I use to build products.", categories: [
       { key: "frontend", title: "Frontend", skills: ["React", "Next.js", "JavaScript", "CSS"] },
       { key: "backend", title: "Backend", skills: ["ASP.NET", "Firebase", "REST API", "SQL"] },

@@ -40,7 +40,6 @@ export default function HeroSection() {
     <div className="showcase-tags" aria-label={t.fields}>{fields.map((field, index) => <motion.span key={field} className={`showcase-tag tag-${index + 1}`} initial={reduceMotion ? false : { opacity: 0, scale: .8 }} animate={{ opacity: 1, scale: 1, rotate: index === 0 ? -5 : index === 1 ? 4 : -3 }} transition={{ delay: .3 + index * .08 }}><b>{index === 0 ? "⌘" : index === 1 ? "✦" : "◇"}</b>{field}</motion.span>)}</div>
     <div className="showcase-eyes" aria-hidden="true"><i /><i /></div>
     <p className="showcase-note">— {c.note}</p>
-    <motion.aside className="hero-social-widget" initial={reduceMotion ? false : { opacity: 0, x: 14 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: .35 }} aria-label={c.socials}><small>{c.socials.toUpperCase()}</small><div><a href={social.github} target="_blank" rel="noreferrer" aria-label="GitHub"><span className="social-app-github">⌘</span><b>GitHub</b></a><a href={social.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><span className="social-app-linkedin">in</span><b>LinkedIn</b></a></div></motion.aside>
 
     <AnimatePresence>{panelOpen && <motion.aside className="showcase-panel" initial={{ opacity: 0, y: 18, scale: .96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 14, scale: .97 }}>
       <header><div><span className="mac-panel-app">⚙️</span><p>{c.navigation}<small>{t.role}</small></p></div><button type="button" onClick={() => setPanelOpen(false)} aria-label="Kapat"><span className="mac-close-symbol">×</span></button></header>
@@ -52,7 +51,7 @@ export default function HeroSection() {
       <button type="button" onClick={() => setPanelOpen((value) => !value)} aria-label={c.navigation} aria-expanded={panelOpen}><small className="dock-tooltip">{c.navigation}</small><span className="showcase-dock-icon dock-finder"><b>⌣</b></span></button>
       <a href="#hakkimda" aria-label={c.about}><small className="dock-tooltip">{c.about}</small><span className="showcase-dock-icon dock-photos">🌸</span></a>
       <a href="#projeler" aria-label={c.projects}><small className="dock-tooltip">{c.projects}</small><span className="showcase-dock-icon dock-files">📁</span></a>
-      <a href="#iletisim" aria-label={c.contact}><small className="dock-tooltip">{c.contact}</small><span className="showcase-dock-icon dock-apple-mail">✉️</span></a>
+      <div className="dock-contact-item"><a href="#iletisim" aria-label={c.contact}><small className="dock-tooltip">{c.contact}</small><span className="showcase-dock-icon dock-apple-phone">☎</span></a><aside className="dock-contact-popover"><small>{language === "tr" ? "BANA ULAŞIN" : "CONTACT ME"}</small><a href={social.instagram || "https://instagram.com"} target="_blank" rel="noreferrer"><span className="contact-instagram">◎</span>Instagram<b>↗</b></a><a href={social.linkedin} target="_blank" rel="noreferrer"><span className="contact-linkedin">in</span>LinkedIn<b>↗</b></a></aside></div>
     </nav>
   </section>;
 }
