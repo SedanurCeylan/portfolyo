@@ -174,6 +174,13 @@ body:has(.creatie-showcase) .site-nav { display: none; }
 
 /* Real profile photo in the Messages contact card */
 .about-message-avatar { position: relative; display: block; overflow: hidden; border: 3px solid #fff; border-radius: 50%; background: #e7f2f8; box-shadow: 0 13px 25px rgba(43,77,94,.2); }
+
+/* Keep the CV file clear of the expandable profile card */
+.hero-cv-file { top: 16%; right: 28px; left: auto; transform-origin: top right; }
+@media (max-width: 760px) {
+  .hero-cv-file { top: 190px; right: 16px; left: auto; width: 84px; scale: .74; transform-origin: top right; }
+  .hero-cv-file strong { max-width: 84px; }
+}
 @media (prefers-reduced-motion: reduce) { .showcase-dock-icon { transition: none; } }
 
 /* Desktop project gallery */
