@@ -340,6 +340,10 @@ body,button,input,textarea,select { font-family: var(--site-font); }
 .showcase-title h1 { font-weight: 800; letter-spacing: -.025em; }.desktop-projects-title h2,.paper-skills-header h2,.paper-experience-header h2,.desktop-about-header h2,.mac-education-header h2 { letter-spacing: -.018em; }.footer-hero h2 { letter-spacing: -.025em; }
 .showcase-profile strong,.desktop-project-card h3,.paper-skill-card h3,.paper-job button strong,.about-notes-layout > article > p,.education-window h3,.detail-story h2 { letter-spacing: -.01em; }
 p,.project-text,.about-notes-layout blockquote,.detail-story p { letter-spacing: .005em; }
+
+/* Keep the main hero statement centered during motion */
+.showcase-title { top: 0; right: 0; bottom: 0; left: 0; display: grid; align-content: center; width: min(760px,66vw); margin-inline: auto; transform: none; }
+@media (max-width: 760px) { .showcase-title { top: 0; width: calc(100% - 20px); } }
 @media (max-width: 760px) { .showcase-profile div > p { display: none; } }
 
 /* Profile opens vertically without clipping its copy */
