@@ -267,6 +267,9 @@ body:has(.creatie-showcase) .site-nav { display: none; }
   .showcase-profile:hover .showcase-avatar { flex-basis: 67px; width: 67px; height: 67px; transform: rotate(-2deg); }
   .showcase-profile:hover div > p { max-height: 48px; margin-top: 10px; opacity: 1; transform: translateY(0); }
 }
+
+/* Keep creator name mathematically centered while Framer Motion animates it */
+.showcase-creator { right: 0; left: 0; width: 100%; transform: none; text-align: center; }
 @media (max-width: 760px) { .showcase-profile div > p { display: none; } }
 
 /* Profile opens vertically without clipping its copy */
