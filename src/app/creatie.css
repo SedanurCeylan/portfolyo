@@ -281,6 +281,13 @@ body:has(.creatie-showcase) .site-nav { display: none; }
 .showcase-profile strong { display: block; overflow: visible; white-space: normal; font-size: clamp(11px,1.05vw,15px); line-height: 1.25; }
 .showcase-profile { min-height: 92px; }
 @media (max-width: 760px) { .showcase-profile strong { font-size: 11px; }.showcase-profile { min-height: 70px; } }
+
+/* Cute desktop cursor */
+@media (hover: hover) and (pointer: fine) {
+  html,body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M5 3.5v21l5.7-5.2 4.2 8.1 4-2.1-4.1-7.8 7.6-.8z' fill='%23fff' stroke='%23172033' stroke-width='1.8' stroke-linejoin='round'/%3E%3Cpath d='M24 3v5M21.5 5.5h5' stroke='%235ba7ff' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") 5 4,auto; }
+  a,button,[role="button"],input[type="submit"],input[type="button"],label[for],select { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M5 3.5v21l5.7-5.2 4.2 8.1 4-2.1-4.1-7.8 7.6-.8z' fill='%235ba7ff' stroke='%23fff' stroke-width='2' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='6' r='3.5' fill='%23f4d64e' stroke='%23172033' stroke-width='1.2'/%3E%3C/svg%3E") 5 4,pointer; }
+  input,textarea { cursor: text; }
+}
 @media (max-width: 760px) { .showcase-profile div > p { display: none; } }
 
 /* Profile opens vertically without clipping its copy */
