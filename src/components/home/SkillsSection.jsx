@@ -22,12 +22,12 @@ export default function SkillsSection() {
     <div className="paper-skills-decor decor-eyes" aria-hidden="true"><i /><i /></div>
     <div className="paper-skills-decor decor-scribble" aria-hidden="true">∿∿</div>
     <header className="paper-skills-header"><span><b>🧰</b>{t.label}</span><h2 id="skills-title">{c.title.map((line) => <strong key={line}>{line}</strong>)}</h2><p>{c.description}</p></header>
-    <div className="paper-skill-cards">{t.categories.map((category, index) => <motion.article key={category.key} className={`paper-skill-card paper-card-${index + 1}`} initial={reduceMotion ? false : { opacity: 0, y: 28, rotate: 0 }} whileInView={{ opacity: 1, y: 0, rotate: [-2, 2, -4, 1][index] }} viewport={{ once: true, amount: .2 }} transition={{ delay: index * .07 }}>
+    <div className="paper-skill-cards">{(t.categories || []).filter(Boolean).map((category, index) => <motion.article key={category.key || `${category.title}-${index}`} className={`paper-skill-card paper-card-${index % 4 + 1}`} initial={reduceMotion ? false : { opacity: 0, y: 28, rotate: 0 }} whileInView={{ opacity: 1, y: 0, rotate: [-2, 2, -4, 1][index % 4] }} viewport={{ once: true, amount: .2 }} transition={{ delay: Math.min(index, 8) * .07 }}>
       <i className="paper-pin" aria-hidden="true" />
       <i className="paper-fold" aria-hidden="true" />
       <div className="paper-card-number"><span>{String(index + 1).padStart(2,"0")}</span><b>{icons[category.key] || "💻"}</b></div>
       <h3>{category.title}</h3>
-      <ul>{category.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul>
+      <ul>{(category.skills || []).filter(Boolean).map((skill, skillIndex) => <li key={`${skill}-${skillIndex}`}>{skill}</li>)}</ul>
     </motion.article>)}</div>
   </section>;
 }

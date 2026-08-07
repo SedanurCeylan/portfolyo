@@ -163,6 +163,9 @@ body:has(.creatie-showcase) .site-nav { display: none; }
 .mac-symbol-calendar { display:grid; grid-template-rows:34% 66%; background:#fff; color:#151922; text-align:center; }.mac-symbol-calendar b { display:grid; place-items:center; background:#f05a5f; color:#fff; font:800 19%/1 Arial,sans-serif; }.mac-symbol-calendar strong { display:grid; place-items:center; font:700 39%/1 Arial,sans-serif; }
 .mac-symbol-mail { background:linear-gradient(#75c6fb,#2386df); }.mac-symbol-mail > i { position:absolute; inset:24% 15%; border:2px solid #fff; border-radius:4px; }.mac-symbol-mail > i::after { content:""; position:absolute; top:-2px; left:10%; width:70%; height:55%; border-right:2px solid #fff; border-bottom:2px solid #fff; transform:rotate(45deg); }
 .mac-panel-app .mac-app-symbol { width:30px; height:30px; }.mac-nav-app .mac-app-symbol { width:26px; height:26px; border-radius:7px; }.mac-nav-app { display:grid; place-items:center; }
+
+.admin-remove-item { justify-self: end; margin-top: 12px; padding: 8px 11px; border: 1px solid rgba(190,59,57,.2); border-radius: 9px; background: rgba(255,239,238,.9); color: #a83a38; font-size: 9px; font-weight: 750; }
+.admin-remove-item:hover { background: #ffe3e1; }
 @media (prefers-reduced-motion: reduce) { .showcase-dock-icon { transition: none; } }
 
 /* Desktop project gallery */

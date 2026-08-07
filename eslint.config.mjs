@@ -10,7 +10,7 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  { ignores: [".next/**", ".next-build/**", "node_modules/**", "out/**"] },
+  { ignores: [".next/**", ".next-build/**", ".next-root-owned-backup/**", "node_modules/**", "out/**"] },
   ...compat.extends("next/core-web-vitals"),
 ];
 

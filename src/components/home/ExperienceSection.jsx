@@ -22,13 +22,13 @@ export default function ExperienceSection() {
     <div className="experience-decor experience-squiggle" aria-hidden="true">∿∿</div>
     <div className="experience-decor experience-eyes" aria-hidden="true"><i /><i /></div>
     <header className="paper-experience-header"><span><b>💼</b>{c.label}</span><h2 id="experience-title">{c.title.map((line) => <strong key={line}>{line}</strong>)}</h2><p>{c.hint}</p></header>
-    <div className="paper-experience-list">{t.items.map((item, index) => {
+    <div className="paper-experience-list">{(t.items || []).filter(Boolean).map((item, index) => {
       const isOpen = active === index;
       return <motion.article key={`${item.company}-${index}`} className={`paper-job job-${index + 1} ${isOpen ? "is-open" : ""}`} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * .06 }}>
         <button type="button" onClick={() => setActive(isOpen ? -1 : index)} aria-expanded={isOpen}>
-          <span className="paper-job-period">{item.period}</span><div><strong>{item.company}</strong><small>{item.role}</small></div><span className="paper-job-app">{icons[index % icons.length]}</span><i className="paper-job-toggle" aria-hidden="true">{isOpen ? "−" : "+"}</i>
+          <span className="paper-job-period">{item.period || "—"}</span><div><strong>{item.company || c.label}</strong><small>{item.role || "—"}</small></div><span className="paper-job-app">{icons[index % icons.length]}</span><i className="paper-job-toggle" aria-hidden="true">{isOpen ? "−" : "+"}</i>
         </button>
-        <AnimatePresence initial={false}>{isOpen && <motion.div className="paper-job-detail" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}><div><p>{item.text}</p><ul>{item.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul></div></motion.div>}</AnimatePresence>
+        <AnimatePresence initial={false}>{isOpen && <motion.div className="paper-job-detail" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}><div><p>{item.text || "—"}</p><ul>{(item.tags || []).filter(Boolean).map((tag, tagIndex) => <li key={`${tag}-${tagIndex}`}>{tag}</li>)}</ul></div></motion.div>}</AnimatePresence>
       </motion.article>;
     })}</div>
   </section>;
