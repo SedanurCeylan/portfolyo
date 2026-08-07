@@ -171,6 +171,9 @@ body:has(.creatie-showcase) .site-nav { display: none; }
 /* CV desktop file: visible on the opposite side of the hero */
 .hero-cv-file { top: 31%; right: auto; left: 30px; }
 @media (max-width: 760px) { .hero-cv-file { top: 175px; right: auto; left: 14px; transform-origin: top left; } }
+
+/* Real profile photo in the Messages contact card */
+.about-message-avatar { position: relative; display: block; overflow: hidden; border: 3px solid #fff; border-radius: 50%; background: #e7f2f8; box-shadow: 0 13px 25px rgba(43,77,94,.2); }
 @media (prefers-reduced-motion: reduce) { .showcase-dock-icon { transition: none; } }
 
 /* Desktop project gallery */
