@@ -47,10 +47,10 @@ export default function HeroSection() {
     </motion.aside>}</AnimatePresence>
 
     <nav className="showcase-dock" aria-label={c.navigation}>
-      <button type="button" onClick={() => setPanelOpen((value) => !value)} aria-label={c.navigation} aria-expanded={panelOpen}><span className="showcase-dock-icon dock-finder"><b>⌣</b></span></button>
-      <a href="#hakkimda" aria-label={c.about}><span className="showcase-dock-icon dock-photos">🌸</span></a>
-      <a href="#projeler" aria-label={c.projects}><span className="showcase-dock-icon dock-files">📁</span></a>
-      <Link href="/iletisim" aria-label={c.contact}><span className="showcase-dock-icon dock-apple-mail">✉️</span></Link>
+      <button type="button" onClick={() => setPanelOpen((value) => !value)} aria-label={c.navigation} aria-expanded={panelOpen}><small className="dock-tooltip">{c.navigation}</small><span className="showcase-dock-icon dock-finder"><b>⌣</b></span></button>
+      <a href="#hakkimda" aria-label={c.about}><small className="dock-tooltip">{c.about}</small><span className="showcase-dock-icon dock-photos">🌸</span></a>
+      <a href="#projeler" aria-label={c.projects}><small className="dock-tooltip">{c.projects}</small><span className="showcase-dock-icon dock-files">📁</span></a>
+      <Link href="/iletisim" aria-label={c.contact}><small className="dock-tooltip">{c.contact}</small><span className="showcase-dock-icon dock-apple-mail">✉️</span></Link>
     </nav>
   </section>;
 }
