@@ -4,10 +4,11 @@ import { getFirebaseUser, getStorageBucket } from "@/lib/firebaseRest";
 
 const storageUrl = () => `https://firebasestorage.googleapis.com/v0/b/${getStorageBucket()}/o/cv%2Fsedanur-ceylan-cv.pdf`;
 
-export async function GET() {
+export async function GET(request) {
   const response = await fetch(`${storageUrl()}?alt=media`, { cache: "no-store" });
   if (!response.ok) return NextResponse.redirect(new URL("/cv.pdf", process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"));
-  return new NextResponse(response.body, { headers: { "Content-Type": "application/pdf", "Content-Disposition": "inline; filename=sedanur-ceylan-cv.pdf", "Cache-Control": "public, max-age=300" } });
+  const disposition = new URL(request.url).searchParams.get("download") === "1" ? "attachment" : "inline";
+  return new NextResponse(response.body, { headers: { "Content-Type": "application/pdf", "Content-Disposition": `${disposition}; filename=sedanur-ceylan-cv.pdf`, "Cache-Control": "public, max-age=300" } });
 }
 
 export async function POST(request) {

@@ -270,6 +270,12 @@ body:has(.creatie-showcase) .site-nav { display: none; }
 
 /* Keep creator name mathematically centered while Framer Motion animates it */
 .showcase-creator { right: 0; left: 0; width: 100%; transform: none; text-align: center; }
+
+/* CV file placed on the hero desktop */
+.hero-cv-file { position: absolute; z-index: 5; top: 12%; right: 34px; display: grid; justify-items: center; gap: 7px; width: 118px; text-align: center; }.hero-cv-file > a:first-child { display: grid; justify-items: center; gap: 7px; }.hero-pdf-icon { position: relative; display: grid; place-items: end center; width: 64px; height: 76px; padding-bottom: 12px; border-radius: 7px; background: linear-gradient(135deg,#fff 0 76%,#dfe5eb 76%); box-shadow: 0 12px 24px rgba(20,39,31,.22); color: #fff; }.hero-pdf-icon::before { content: ""; position: absolute; right: 0; top: 0; border-width: 0 18px 18px 0; border-style: solid; border-color: transparent #cfd7df transparent transparent; }.hero-pdf-icon b { display: block; width: 100%; padding: 5px 0; background: #ee3f46; font-size: 10px; letter-spacing: .06em; }.hero-cv-file strong { max-width: 118px; color: #fff; text-shadow: 0 2px 8px rgba(8,23,15,.6); font-size: 9px; font-weight: 650; line-height: 1.25; overflow-wrap: anywhere; }.hero-cv-download { padding: 6px 9px; border: 1px solid rgba(255,255,255,.62); border-radius: 999px; background: rgba(240,248,245,.7); color: #172033; box-shadow: 0 6px 15px rgba(20,39,31,.14); font-size: 8px; font-weight: 750; backdrop-filter: blur(12px); }.hero-cv-file:hover .hero-pdf-icon { transform: translateY(-4px); }.hero-pdf-icon { transition: transform .18s; }
+@media (max-width: 760px) { .hero-cv-file { top: 165px; right: 17px; width: 90px; transform: scale(.86); transform-origin: top right; }.hero-cv-file strong { max-width: 92px; } }
+.hero-cv-file { transform-origin: top right; }
+@media (max-width: 760px) { .hero-cv-file { scale: .86; } }
 @media (max-width: 760px) { .showcase-profile div > p { display: none; } }
 
 /* Profile opens vertically without clipping its copy */

@@ -7,8 +7,8 @@ import { useSitePreferences } from "@/context/SitePreferences";
 import { useSiteContent } from "@/context/SiteContent";
 
 const copy = {
-  tr: { available: "Yeni projelere açık", slogan: ["FİKİRLERİ", "KODLA", "ÜRÜNE", "DÖNÜŞTÜR"], note: "Sadece kod değil; yaşayan dijital ürünler geliştiriyorum.", about: "Hakkımda", projects: "Projeler", experience: "Deneyim", contact: "İletişim", navigation: "Navigasyon", language: "English" },
-  en: { available: "Available for work", slogan: ["TURNING", "IDEAS", "INTO", "PRODUCTS"], note: "Not just code; I build digital products that feel alive.", about: "About", projects: "Projects", experience: "Experience", contact: "Contact", navigation: "Navigation", language: "Türkçe" },
+  tr: { available: "Yeni projelere açık", slogan: ["FİKİRLERİ", "KODLA", "ÜRÜNE", "DÖNÜŞTÜR"], note: "Sadece kod değil; yaşayan dijital ürünler geliştiriyorum.", about: "Hakkımda", projects: "Projeler", experience: "Deneyim", contact: "İletişim", navigation: "Navigasyon", language: "English", viewCv: "CV'yi görüntüle", downloadCv: "İndir" },
+  en: { available: "Available for work", slogan: ["TURNING", "IDEAS", "INTO", "PRODUCTS"], note: "Not just code; I build digital products that feel alive.", about: "About", projects: "Projects", experience: "Experience", contact: "Contact", navigation: "Navigation", language: "Türkçe", viewCv: "View résumé", downloadCv: "Download" },
 };
 
 export default function HeroSection() {
@@ -30,6 +30,7 @@ export default function HeroSection() {
       <span className="showcase-avatar"><Image src={about.image} alt={`${t.firstName} ${t.lastName}`} fill className="object-cover" sizes="67px" unoptimized={about.image.startsWith("/api/")} /></span>
       <div><small><i aria-hidden="true" />{c.available}</small><strong>{t.firstName} {t.lastName} — {t.role}</strong><p>{c.note}</p></div>
     </motion.aside>
+    <motion.div className="hero-cv-file" initial={reduceMotion ? false : { opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .2 }}><a href="/api/cv" target="_blank" rel="noreferrer" aria-label={c.viewCv}><span className="hero-pdf-icon"><b>PDF</b></span><strong>Sedanur_Ceylan_CV.pdf</strong></a><a className="hero-cv-download" href="/api/cv?download=1" download="Sedanur-Ceylan-CV.pdf">↓ {c.downloadCv}</a></motion.div>
 
     <motion.div className="showcase-title" initial={reduceMotion ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .65 }}>
       <h1 id="hero-title">{c.slogan.map((line) => <span key={line}>{line}</span>)}</h1>
